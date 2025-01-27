@@ -1,3 +1,3 @@
 export const environment = {
-  api: 'https://backend-tau-one-16.vercel.app/'
+  api: 'https://backend-djzhen1996s-projects.vercel.app/'
 }
