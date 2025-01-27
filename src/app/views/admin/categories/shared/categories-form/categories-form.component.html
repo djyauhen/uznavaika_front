@@ -1,0 +1,5 @@
+<form class="input-items" [formGroup]="categoryForm">
+  <label class="input-label">Название направления</label>
+  <input type="text" class="input-item" (change)="categoryChange()" formControlName="title"
+         placeholder="Введите название направления">
+</form>

@@ -1,0 +1,45 @@
+<div class="sidebar">
+  <div class="sidebar-container">
+    <div class="logo" [routerLink]="['/admin']">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+    <nav class="navigation-sidebar">
+      <ul class="menu-items">
+        <li class="menu-item sidebar-btn"
+            [routerLink]="['/admin']"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }">
+          Главная
+        </li>
+        <li class="menu-item sidebar-btn" [routerLink]="['teacher']" [routerLinkActive]="['active']">Педагоги</li>
+        <li class="menu-item sidebar-btn" [routerLink]="['category']" [routerLinkActive]="['active']">Направления</li>
+        <li class="menu-item sidebar-btn" [routerLink]="['lesson']" [routerLinkActive]="['active']">Уроки</li>
+        <li class="menu-item sidebar-btn" [routerLink]="['document']" [routerLinkActive]="['active']">Документы</li>
+        <li class="menu-item sidebar-btn" [routerLink]="['offer']" [routerLinkActive]="['active']">Специальные предложения</li>
+        <li class="menu-item sidebar-btn" [routerLink]="['photo']" [routerLinkActive]="['active']">Фотографии детей</li>
+        <li class="menu-item sidebar-btn logout sidebar-btn" (click)="logout()">Выйти</li>
+      </ul>
+    </nav>
+
+    <button [matMenuTriggerFor]="menu" class="burger">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#menu"></use>
+      </svg>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+      <li mat-menu-item class="menu-item sidebar-btn"
+          [routerLink]="['/admin']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }">
+        Главная
+      </li>
+      <li mat-menu-item class="menu-item sidebar-btn" [routerLink]="['teacher']" [routerLinkActive]="['active']">Педагоги</li>
+      <li mat-menu-item class="menu-item sidebar-btn" [routerLink]="['category']" [routerLinkActive]="['active']">Направления</li>
+      <li mat-menu-item class="menu-item sidebar-btn" [routerLink]="['lesson']" [routerLinkActive]="['active']">Уроки</li>
+      <li mat-menu-item class="menu-item sidebar-btn" [routerLink]="['document']" [routerLinkActive]="['active']">Документы</li>
+      <li mat-menu-item class="menu-item sidebar-btn" [routerLink]="['offer']" [routerLinkActive]="['active']">Специальные предложения</li>
+      <li mat-menu-item class="menu-item sidebar-btn" [routerLink]="['photo']" [routerLinkActive]="['active']">Фотографии детей</li>
+      <li mat-menu-item class="menu-item sidebar-btn logout sidebar-btn" (click)="logout()">Выйти</li>
+    </mat-menu>
+  </div>
+</div>

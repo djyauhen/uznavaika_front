@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="title">Специальные предложения</h1>
+
+  <div class="create-category-btn">
+    <button class="btn agree-btn admin-btn" [routerLink]="['create']">
+      Создать предложение
+    </button>
+  </div>
+
+  <div class="category-items">
+    <offers-card *ngFor="let offer of offers" [offer]="offer" (offerDelete)="reloadOffers($event)"></offers-card>
+  </div>
+</div>

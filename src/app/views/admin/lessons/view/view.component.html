@@ -1,0 +1,34 @@
+<div class="container" *ngIf="lesson">
+  <h1 class="title">Просмотр занятия</h1>
+
+  <div class="lesson-items">
+    <div class="lesson-item">
+      <div class="lesson-item-title">Название урока</div>
+      <div class="lesson-item-text">{{lesson.name}}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Направление занятия</div>
+      <div class="lesson-item-text">{{category!.title}}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Возрастная группа</div>
+      <div class="lesson-item-text">{{lesson.age}}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Описание урока</div>
+      <div class="lesson-item-text" [innerHTML]="lesson.description"></div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Типы занятий</div>
+      <div class="lesson-item-text" *ngFor="let lessonTypes of lesson.types_class">{{lessonTypes.class_name}} - {{lessonTypes.amount}} руб</div>
+    </div>
+    <div class="lesson-item" *ngIf="lesson.subscription_amount || lesson.subscription_amount === 0">
+      <div class="lesson-item-title">Цена со скидкой</div>
+      <div class="lesson-item-text"> {{ lesson.subscription_amount | lessonAmount}} </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn agree-btn" (click)="goBack()">Назад</button>
+  </div>
+</div>

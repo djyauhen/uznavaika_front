@@ -1,0 +1,31 @@
+<div class="container" *ngIf="teacher">
+  <h1 class="title">Просмотр педагога</h1>
+
+  <div class="lesson-items">
+    <div class="lesson-item">
+      <div class="lesson-item-title">Ф.И.О.</div>
+      <div class="lesson-item-text">{{ teacher.full_name }}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Должность</div>
+      <div class="lesson-item-text">{{ teacher.post }}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Образование</div>
+      <div class="lesson-item-text" [innerHTML]="teacher.study"></div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Фото</div>
+      <img
+        *ngIf="teacher.path"
+        src="{{environment.api+teacher.path}}"
+        alt="Фото"
+        class="photo-preview"
+      />
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn agree-btn" (click)="goBack()">Назад</button>
+  </div>
+</div>

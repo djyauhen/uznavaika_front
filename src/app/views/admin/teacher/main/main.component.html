@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="title">Педагоги</h1>
+
+  <div class="create-category-btn">
+    <button class="btn agree-btn admin-btn" [routerLink]="['create']">
+      Добавить педагога
+    </button>
+  </div>
+
+  <div class="category-items">
+    <teacher-card *ngFor="let teacher of teachers" [teacher]="teacher" (teacherDeleted)="reloadTeachers($event)"></teacher-card>
+  </div>
+</div>
+

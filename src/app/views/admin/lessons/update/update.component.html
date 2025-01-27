@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="title">Редактируем занятия</h1>
+  <lessons-form (lessonCreate)="changeLesson($event)"></lessons-form>
+  <div class="actions">
+    <button class="btn agree-btn" (click)="updateLesson()">Сохранить</button>
+    <button class="btn disagree-btn" (click)="goBack()">Отмена</button>
+  </div>
+</div>

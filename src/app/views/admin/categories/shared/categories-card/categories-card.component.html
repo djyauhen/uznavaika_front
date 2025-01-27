@@ -1,0 +1,15 @@
+<div class="category-card">
+  <div class="category-card-name">{{ category.title }}</div>
+  <div class="category-actions">
+    <div class="category-action action-btn" (click)="updateCategory(category._id!)" title="Редактировать">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#pencil"></use>
+      </svg>
+    </div>
+    <div class="category-action action-btn" (click)="deleteCategory(category._id!)" title="Удалить">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#delete-basket"></use>
+      </svg>
+    </div>
+  </div>
+</div>

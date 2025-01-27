@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="title">Редактирование направления</h1>
+  <categories-form (categoryCreate)="changeCategory($event)"></categories-form>
+  <div class="actions">
+    <button class="btn agree-btn" (click)="updateCategory()">Сохранить</button>
+    <button class="btn disagree-btn" (click)="goBack()">Отмена</button>
+  </div>
+</div>

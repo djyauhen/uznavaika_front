@@ -1,0 +1,20 @@
+@import '../../teacher.component';
+
+.input-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.types-class {
+  display: flex;
+  gap: 5px;
+}
+
+input[type="file"] {
+  display: none; /* Скрываем стандартный инпут */
+}
+
+.btn-primary {
+  @include admin-btn-primary
+}

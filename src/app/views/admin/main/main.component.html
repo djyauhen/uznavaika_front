@@ -1,0 +1,158 @@
+<div class="container">
+  <h1 class="title">Главная</h1>
+
+  <div class="categories-table-items">
+    <div class="categories-table">
+      <div class="category-table-title">
+        Педагоги
+      </div>
+      <div class="table-container">
+        <table class="category-table-item" *ngIf="teachers">
+          <!-- Заголовок таблицы -->
+          <thead>
+          <tr class="categories-table-item-head">
+            <th>Ф.И.О.</th>
+            <th>Должность</th>
+            <th>Образование</th>
+          </tr>
+          </thead>
+
+          <!-- Тело таблицы -->
+          <tbody>
+          <tr *ngFor="let teacher of teachers">
+            <td>{{ teacher.full_name }}</td>
+            <td>{{ teacher.post }}</td>
+            <td [innerHTML]="teacher.study"></td>
+          </tr>
+
+          <!-- Сообщение об отсутствии данных -->
+          <tr *ngIf="!teachers || teachers.length === 0">
+            <td colspan="3" class="no-data-message">Нет данных</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+    <div class="categories-table">
+      <div class="category-table-title">
+        Направления занятий
+      </div>
+      <div class="table-container">
+        <table class="category-table-item" *ngIf="categories">
+          <!-- Заголовок таблицы -->
+          <thead>
+          <tr class="categories-table-item-head">
+            <th>Название направления</th>
+          </tr>
+          </thead>
+
+          <!-- Тело таблицы -->
+          <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.title }}</td>
+          </tr>
+
+          <!-- Сообщение об отсутствии данных -->
+          <tr *ngIf="!categories || categories.length === 0">
+            <td colspan="3" class="no-data-message">Нет данных</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="categories-table">
+      <div class="category-table-title">
+        Занятия
+      </div>
+      <div class="table-container">
+        <table class="category-table-item  min-table" *ngIf="lessonsWithCategories">
+
+          <thead>
+          <tr>
+            <th>Название урока</th>
+            <th>Направление занятия</th>
+            <th>Возрастная группа</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let lesson of lessonsWithCategories">
+            <td>{{ lesson.name }}</td>
+            <td>{{ lesson.categoryTitle }}</td>
+            <td>{{ lesson.age }}</td>
+          </tr>
+          <tr *ngIf="!lessonsWithCategories || (lessonsWithCategories.length === 0)">
+            <td colspan="3">
+              Нет данных
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="categories-table">
+      <div class="category-table-title">
+        Специальные предложения
+      </div>
+      <div class="table-container">
+        <table class="category-table-item min-table" *ngIf="offers">
+          <thead>
+          <tr>
+            <th>Название предложения</th>
+            <th>Текущая цена</th>
+            <th>Предыдущая цена</th>
+            <th>Показать на странице</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let offer of offers">
+            <td>{{ offer.title }}</td>
+            <td>{{ Number(offer.newPrice) | lessonAmount }}</td>
+            <td>{{ (offer.oldPrice ? Number(offer.oldPrice) : null) | lessonAmount }}</td>
+            <td>{{ offer.showOffer ? "Да" : "Нет" }}</td>
+          </tr>
+          <tr *ngIf="!offers || (offers.length === 0)">
+            <td colspan="3">
+              Нет данных
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="categories-table">
+      <div class="category-table-title">
+        Документы
+      </div>
+      <div class="table-container">
+        <table class="category-table-item" *ngIf="documents">
+          <thead>
+          <tr>
+            <th>Название документа</th>
+            <th>Ссылка на документ</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let document of documents">
+            <td>{{ document.title }}</td>
+            <td>
+              <a href="{{environment.api}}{{document.documentHash}}" target="_blank">Открыть</a>
+            </td>
+          </tr>
+          <tr *ngIf="!documents || (documents.length === 0)">
+            <td colspan="3">
+              Нет данных
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

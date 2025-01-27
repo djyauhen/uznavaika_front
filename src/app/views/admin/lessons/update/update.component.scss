@@ -1,0 +1,15 @@
+@import '../lessons.component';
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+
+  .btn {
+    width: 110px;
+  }
+}
+
+h1 {
+  margin-bottom: 30px;
+}

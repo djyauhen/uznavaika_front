@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+// Define the theme object.
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($theme);
+@use '@angular/material' as mat;
+@import "../styles/fonts";
+@import "../styles/vars";
+@import "../styles/mixins";
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  )
+));
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  @include mat.all-component-themes($theme);
+}
+
+#editor.p-editor {
+
+  .p-editor-toolbar {
+    background: transparent;
+    border-start-end-radius: 5px;
+    border-start-start-radius: 5px;
+    border: 1px solid $admin-brown-light-color;
+
+    &.ql-snow {
+      .ql-picker .ql-picker-label {
+        color: $admin-brown-color;
+      }
+
+      .ql-stroke {
+        stroke: $admin-brown-color;
+      }
+
+      .ql-fill {
+        fill: $admin-brown-color;
+      }
+    }
+  }
+
+  .p-editor-content {
+    .ql-editor {
+      background: transparent;
+      @include admin-text-p3;
+      padding: 0;
+    }
+
+    &.ql-snow {
+      border: 1px solid $admin-brown-light-color;
+      border-top-width: 0;
+      border-end-end-radius: 5px;
+      border-end-start-radius: 5px;
+      padding: 5px 10px;
+    }
+  }
+}
+ol, li {
+  margin-inline-start: 1em;
+}
+
+p {
+  max-width: 550px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.p-editor .ql-snow.ql-toolbar button.ql-active, .p-editor .ql-snow.ql-toolbar .ql-picker-label.ql-active, .p-editor .ql-snow.ql-toolbar .ql-picker-item.ql-selected {
+  background: bisque;
+}
+
+@include mat.core();
+@include mat.color-variants-backwards-compatibility($theme);

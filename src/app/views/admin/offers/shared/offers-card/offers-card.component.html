@@ -1,0 +1,24 @@
+<div class="offer-card">
+  <div class="offer-card-name">{{ offer.title }}</div>
+  <div class="offer-card-description">Текущая цена: {{ offer.newPrice }}</div>
+  <div class="offer-card-description" *ngIf="offer.oldPrice">Старая цена: {{ offer.oldPrice }}</div>
+  <div class="offer-card-description">Показать на странице: {{ offer.showOffer ? "Да" : "Нет" }}</div>
+
+  <div class="offer-actions">
+    <div class="offer-action action-btn" (click)="updateOffer(offer._id!)" title="Редактировать">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#pencil"></use>
+      </svg>
+    </div>
+    <div class="offer-action action-btn" (click)="deleteOffer(offer._id!)" title="Удалить">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#delete-basket"></use>
+      </svg>
+    </div>
+    <div class="offer-action action-btn" (click)="viewOffer(offer._id!)" title="Просмотр">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#eye"></use>
+      </svg>
+    </div>
+  </div>
+</div>

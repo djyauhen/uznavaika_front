@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="title">Создание предложения</h1>
+  <offers-form (offerCreate)="changeOffer($event)"></offers-form>
+  <div class="actions">
+    <button class="btn agree-btn" (click)="createOffer()">Создать</button>
+    <button class="btn disagree-btn" (click)="goBack()">Отмена</button>
+  </div>
+</div>

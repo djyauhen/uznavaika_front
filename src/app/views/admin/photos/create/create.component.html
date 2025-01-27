@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="title">Загрузка фото</h1>
+
+  <div class="input-items" [formGroup]="photoForm" (change)="photoChange()">
+    <label class="input-label">Описание фото
+      <input type="text" class="input-item" formControlName="additionalData" placeholder="Введите описание к фото">
+    </label>
+
+
+    <label class="input-label">
+      <label for="photoInput" class="btn-primary">
+        {{ photoUrl ? 'Изменить фото' : 'Загрузить фото' }}
+      </label>
+      <input
+        type="file"
+        id="photoInput"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+      />
+    </label>
+
+    <div class="input-label">
+      <img
+        *ngIf="photoUrl"
+        src="{{photoUrl}}"
+        alt="Фото"
+        class="photo-preview"
+      />
+      <div *ngIf="!photoUrl">
+        Фото отсутствует
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn agree-btn" (click)="createPhoto()">Создать</button>
+    <button class="btn disagree-btn" (click)="goBack()">Отмена</button>
+  </div>
+</div>

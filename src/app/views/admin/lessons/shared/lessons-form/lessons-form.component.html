@@ -1,0 +1,56 @@
+<div class="input-items" [formGroup]="lessonForm" (blur)="lessonChange()">
+  <label class="input-label">Название занятия
+    <input type="text" class="input-item" formControlName="name" placeholder="Введите название">
+  </label>
+  <label class="input-label">Направление занятия
+    <select type="text" class="input-item" formControlName="category_id">
+      <option value="" disabled selected>Выберите направление</option>
+      <option *ngFor="let category of categories" [value]="category._id">{{ category.title }}</option>
+    </select>
+  </label>
+
+  <label class="input-label">Возраст <i>(например: 3-4)</i>
+    <input type="text" class="input-item" formControlName="age"
+           placeholder="Введите возраст детей">
+  </label>
+
+  <label class="input-label">Описание занятия
+    <p-editor id="editor" formControlName="description" (onTextChange)="changeDesc()"
+              [placeholder]="'Введите описание занятия'">
+
+      <ng-template #header>
+
+        <span class="ql-formats">
+            <button type="button" class="ql-bold" aria-label="Bold"></button>
+            <button type="button" class="ql-italic" aria-label="Italic"></button>
+            <button type="button" class="ql-underline" aria-label="Underline"></button>
+        </span>
+
+        <span class="ql-formats">
+          <button value="ordered" aria-label="Ordered List" type="button" class="ql-list"></button>
+          <button value="bullet" aria-label="Unordered List" type="button" class="ql-list"></button>
+        </span>
+      </ng-template>
+
+    </p-editor>
+  </label>
+
+  <label class="input-label">Тип занятия <i>(например: Индивидуальное занятие, 1350)</i>
+    <div formArrayName="types_class">
+      <div class="types-class" *ngFor="let typeClass of typesClassArray.controls; let i = index" [formGroupName]="i">
+        <input class="input-item" formControlName="class_name" placeholder="Введите тип занятия"/>
+        <input class="input-item" formControlName="amount" type="text" placeholder="Введите цену занятия"/>
+        <button type="button" class="btn disagree-btn small-btn" (click)="removeTypeClass(i)">-</button>
+      </div>
+    </div>
+    <button type="button" class="btn agree-btn small-btn" (click)="addTypeClass()">+</button>
+  </label>
+
+  <label class="input-label">Цена со скидкой <i>(например: 1350)</i>
+    <input type="text"
+           class="input-item"
+           formControlName="subscription_amount"
+           placeholder="Введите цену со скидкой, если такова имеется">
+  </label>
+
+</div>

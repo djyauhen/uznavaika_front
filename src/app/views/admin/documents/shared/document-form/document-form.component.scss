@@ -1,0 +1,31 @@
+@import '../../documents.component';
+
+.input-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.types-class {
+  display: flex;
+  gap: 5px;
+}
+
+input[type="file"] {
+  display: none; /* Скрываем стандартный инпут */
+}
+
+
+a {
+  text-decoration: none;
+  color: $admin-brown-color;
+
+  &:hover {
+    color: $admin-brown-light-color;
+    text-decoration: underline;
+  }
+}
+
+.btn-primary {
+  @include admin-btn-primary
+}

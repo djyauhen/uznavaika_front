@@ -1,0 +1,42 @@
+@import '../teacher.component';
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+
+  .btn {
+    font-size: 18px;
+    width: 110px;
+  }
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.lesson-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 550px;
+
+  .lesson-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .lesson-item-title {
+      @include admin-text-p2;
+      font-weight: 600;
+    }
+    .lesson-item-text {
+      @include admin-text-p3;
+    }
+
+    img {
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+}

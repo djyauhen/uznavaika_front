@@ -1,0 +1,48 @@
+@import "../admin.component";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.categories-table-items {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .categories-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $admin-brown-light-color;
+
+    .category-table-title {
+      @include admin-title-h4;
+    }
+
+    .table-container {
+      overflow-x: auto; /* Включает горизонтальную прокрутку */
+      -webkit-overflow-scrolling: touch; /* Плавная прокрутка для мобильных устройств */
+
+      .category-table-item {
+        &.min-table {
+          width: 100%; /* Таблица растягивается на всю ширину */
+          border-collapse: collapse; /* Убирает двойные границы */
+          min-width: 510px;
+        }
+
+        thead th {
+          text-align: start;
+          padding: 5px 10px 5px 0;
+        }
+
+        td {
+          padding: 5px 10px 5px 0;
+        }
+      }
+
+    }
+  }
+}

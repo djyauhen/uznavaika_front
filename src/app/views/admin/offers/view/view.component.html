@@ -1,0 +1,27 @@
+<div class="container" *ngIf="offer">
+  <h1 class="title">Просмотр предложения</h1>
+
+  <div class="lesson-items">
+    <div class="lesson-item">
+      <div class="lesson-item-title">Название предложения</div>
+      <div class="lesson-item-text">{{ offer.title }}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Текущая цена:</div>
+      <div class="lesson-item-text">{{ Number(offer.newPrice) | lessonAmount }}</div>
+    </div>
+    <div class="lesson-item" *ngIf="offer.oldPrice">
+      <div class="lesson-item-title">Предыдущая цена:</div>
+      <div class="lesson-item-text">{{ (offer.oldPrice ? Number(offer.oldPrice) : null) | lessonAmount }}</div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item-title">Показать на странице:</div>
+      <div class="lesson-item-text">{{ offer.showOffer ? "Да" : "Нет" }}</div>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <button class="btn agree-btn" (click)="goBack()">Назад</button>
+  </div>
+</div>

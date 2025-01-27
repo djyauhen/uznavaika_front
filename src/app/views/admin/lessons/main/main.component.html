@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="title">Занятия</h1>
+
+  <div class="create-category-btn">
+    <button class="btn agree-btn admin-btn" [routerLink]="['create']">
+      Создать занятие
+    </button>
+  </div>
+
+  <div class="category-items" *ngIf="lessons">
+    <lessons-card *ngFor="let lesson of lessons" [lesson]="lesson" (lessonDelete)="reloadLessons($event)"></lessons-card>
+  </div>
+</div>

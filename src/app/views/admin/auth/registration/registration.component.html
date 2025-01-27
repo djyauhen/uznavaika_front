@@ -1,0 +1,17 @@
+<form [formGroup]="form" class="container">
+  <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+  <div class="form-floating">
+    <label for="floatingInput">Логин</label>
+    <input type="email" class="form-control" id="floatingInput" placeholder="Введите логин">
+  </div>
+  <div class="form-floating">
+    <label for="floatingPassword">Пароль</label>
+    <input type="password" autocomplete="false" class="form-control" id="floatingPassword" placeholder="Введите пароль">
+  </div>
+  <div class="form-floating">
+    <label for="repeatPassword">Повторите пароль</label>
+    <input type="password" autocomplete="false" class="form-control" id="repeatPassword" placeholder="Повторите пароль">
+  </div>
+  <button class="btn btn-primary" [disabled]="!form.valid" type="button">Зарегистрироваться</button>
+  <p>Есть аккаунт! <a [routerLink]="['../login']">Войдите</a></p>
+</form>

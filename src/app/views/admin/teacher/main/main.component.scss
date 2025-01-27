@@ -1,0 +1,19 @@
+@import "../teacher.component";
+
+.container {
+
+  .create-category-btn {
+    margin-top: 30px;
+
+    .agree-btn {
+      font-size: 22px;
+    }
+  }
+
+  .category-items {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}

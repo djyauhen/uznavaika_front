@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="title">Редактировать преподавателя</h1>
+  <teacher-form (teacherCreated)="changeTeacher($event)"></teacher-form>
+  <div class="actions">
+    <button class="btn agree-btn" (click)="updateTeacher()">Добавить</button>
+    <button class="btn disagree-btn" (click)="goBack()">Отмена</button>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+@import '../../../../styles/vars';
+@import '../../../../styles/mixins';
+@import '../../../../styles/fonts';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Gilroy, sans-serif;
+}
+
+.container {
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  @include admin-title-h1;
+}
+
+h3 {
+  @include admin-title-h3;
+}
+
+h4 {
+  @include admin-title-h4;
+}
+
+.btn {
+  &.btn-primary:not(:disabled) {
+    @include admin-btn-primary;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $admin-btn-primary-hover;
+    }
+  }
+
+  &:disabled {
+    @include admin-btn-disabled;
+  }
+
+  &.agree-btn {
+    @include admin-btn-agree;
+
+    &:hover {
+      background-color: $admin-green-lighter-color;
+    }
+  }
+
+  &.disagree-btn {
+    @include admin-btn-disagree;
+
+    &:hover {
+      background-color: $admin-red-hover-color;
+    }
+  }
+
+  &.small-btn {
+    @include admin-btn-small;
+  }
+}
+
+.input-item {
+  border: 1px solid $admin-brown-light-color;
+  border-radius: 5px;
+  @include admin-text-p3;
+  padding: 5px 10px;
+  max-width: 550px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus-visible {
+    outline: 2px solid $admin-brown-light-color;
+  }
+}
+
+.input-label {
+  @include admin-text-p3;
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+
+  img {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+ol, li {
+  margin-inline-start: 1em;
+}
+
+@media screen and (max-width: 767px){
+  .container {
+    padding: 40px 10px;
+  }
+
+  h1, h2 {
+    @include admin-title-h3;
+  }
+
+  h3,h4 {
+    @include admin-title-h4;
+  }
+}
+

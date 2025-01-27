@@ -1,0 +1,111 @@
+@import '../../../../../../styles/vars';
+@import '../../../../../../styles/mixins';
+@import '../../../../../../styles/fonts';
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Gilroy, sans-serif;
+}
+
+.sidebar-btn {
+  padding: 10px 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+
+  &.active {
+    color: $admin-brown-color;
+    background: $admin-yellow-color;
+  }
+
+  &:hover {
+    color: $admin-brown-color;
+    background: $admin-peach-color;
+    cursor: pointer;
+  }
+}
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  min-width: 200px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: $admin-brown-light-color;
+  color: $admin-peach-color;
+  margin: 0;
+  padding: 20px;
+
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+
+    .burger {
+      display: none;
+      background: transparent;
+      border: 0;
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        color: $admin-yellow-color; /* Цвет */
+        fill: none; /* Убирает заливку */
+
+        //use {
+        //  width: 100%;
+        //  height: 100%;
+        //  fill: none;
+        //  stroke: $admin-yellow-color;
+        //}
+        //
+        //&:hover {
+        //  use {
+        //    stroke: $admin-yellow-light-color;
+        //  }
+        //}
+      }
+    }
+
+    .logo {
+      cursor: pointer;
+    }
+
+    .menu-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .logout {
+      position: relative;
+      bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    min-width: unset;
+    height: auto;
+    min-height: unset;
+
+    .sidebar-container {
+      flex-direction: row;
+      justify-content: space-between;
+
+      .navigation-sidebar {
+        display: none;
+        height: 0;
+      }
+
+
+      .burger {
+        display: block;
+      }
+    }
+  }
+}
+

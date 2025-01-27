@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-Regular.eot');
+  src: local('Gilroy Regular'), local('../public/fonts/Gilroy-Regular'),
+  url('../public/fonts/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Gilroy-Regular.woff2') format('woff2'),
+  url('../public/fonts/Gilroy-Regular.woff') format('woff'),
+  url('../public/fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-Bold.eot');
+  src: local('Gilroy Bold'), local('../public/fonts/Gilroy-Bold'),
+  url('../public/fonts/Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Gilroy-Bold.woff2') format('woff2'),
+  url('../public/fonts/Gilroy-Bold.woff') format('woff'),
+  url('../public/fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-RegularItalic.eot');
+  src: local('Gilroy Regular Italic'), local('../public/fonts/Gilroy-RegularItalic'),
+  url('../public/fonts/Gilroy-RegularItalic.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Gilroy-RegularItalic.woff2') format('woff2'),
+  url('../public/fonts/Gilroy-RegularItalic.woff') format('woff'),
+  url('../public/fonts/Gilroy-RegularItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-BoldItalic.eot');
+  src: local('Gilroy Bold Italic'), local('../public/fonts/Gilroy-BoldItalic'),
+  url('../public/fonts/Gilroy-BoldItalic.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Gilroy-BoldItalic.woff2') format('woff2'),
+  url('../public/fonts/Gilroy-BoldItalic.woff') format('woff'),
+  url('../public/fonts/Gilroy-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Adigiana 2';
+  src: url('../public/fonts/adigiana2.ttf');
+}

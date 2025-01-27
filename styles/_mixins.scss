@@ -1,0 +1,117 @@
+@import "fonts";
+@import "vars";
+
+//Admin
+//Admin text
+@mixin admin-title {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: $admin-brown-color;
+}
+
+@mixin admin-title-h1 {
+  @include admin-title;
+  font-size: 58px;
+  line-height: 64px;
+}
+
+@mixin admin-title-h3 {
+  @include admin-title;
+  font-size: 28px;
+  line-height: 30px;
+}
+
+@mixin admin-title-h4 {
+  @include admin-title;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+@mixin admin-text-p1 {
+  @include admin-title;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin admin-text-p2 {
+  @include admin-title;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+@mixin admin-text-p3 {
+  @include admin-title;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin admin-text-p4 {
+  @include admin-title;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+//Admin buttons
+@mixin admin-btn {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 140%;
+  border: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+
+  @media screen and (max-width: 767px){
+    font-size: 16px;
+  }
+}
+
+@mixin admin-btn-primary {
+  @include admin-btn;
+  color: $admin-yellow-light-color;
+  background: $admin-btn-primary;
+}
+
+@mixin admin-btn-agree {
+  @include admin-btn;
+  background-color: $admin-green-color;
+  color: $admin-yellow-lighter-color;
+}
+
+@mixin admin-btn-disagree {
+  @include admin-btn;
+  color: $admin-yellow-light-color;
+  background: $admin-red-color;
+}
+
+@mixin admin-btn-disabled {
+  @include admin-btn;
+  color: $admin-yellow-light-color;
+  background: $admin-btn-disabled;
+  cursor: not-allowed;
+}
+
+@mixin admin-btn-small {
+  @include admin-btn;
+  font-size: 16px;
+  padding: 5px 15px;
+}
+
+//Admin-inputs
+
+@mixin admin-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 2px solid $admin-brown-light-color;
+  border-radius: 5px;
+  @include admin-text-p2;
+  outline: none;
+}

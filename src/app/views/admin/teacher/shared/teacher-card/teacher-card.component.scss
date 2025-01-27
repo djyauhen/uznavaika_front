@@ -1,0 +1,68 @@
+@import "../../teacher.component";
+
+.category-card {
+  border: 2px solid $admin-brown-color;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 15px;
+  background: $admin-yellow-lighter-color;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-height: 200px;
+  height: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+
+  &:hover {
+    background: $admin-yellow-light-color;
+  }
+
+  .lessons-card-name {
+    @include admin-text-p2;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .lessons-card-description {
+    @include admin-text-p3;
+
+    &.lessons-card-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+
+  .category-actions {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    .category-action {
+      width: 30px;
+      height: 30px;
+      background: $admin-peach-color;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid $admin-brown-color;
+
+      .icon {
+        width: 100%;
+        height: 100%;
+
+        use path {
+          fill: $admin-brown-color;
+        }
+      }
+
+      &:hover {
+        background: $admin-orange-color;
+        cursor: pointer;
+      }
+    }
+  }
+}

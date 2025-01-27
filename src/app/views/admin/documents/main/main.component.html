@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="title">Документы</h1>
+
+  <div class="create-category-btn">
+    <button class="btn agree-btn admin-btn" [routerLink]="['create']">
+      Добавить документ
+    </button>
+  </div>
+
+  <div class="category-items">
+    <document-card *ngFor="let document of documents" [document]="document" (documentDeleted)="reloadDocuments($event)"></document-card>
+  </div>
+</div>

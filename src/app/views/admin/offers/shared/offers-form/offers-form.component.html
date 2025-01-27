@@ -1,0 +1,20 @@
+<form class="input-items" [formGroup]="offerForm" (change)="offerChange()">
+  <label class="input-label">Название предложения
+    <input type="text" class="input-item" formControlName="title"
+           placeholder="Введите название предложения">
+  </label>
+  <label class="input-label">Цена предложения
+    <i>(если предложение бесплатное, напишите цифру 0)</i>
+    <input type="text" class="input-item" formControlName="newPrice"
+           placeholder="Введите сумму предложения">
+  </label>
+  <label class="input-label">Старая цена предложения
+    <i>(если цены нет, оставьте поле пустым)</i>
+    <input type="text" class="input-item" formControlName="oldPrice"
+           placeholder="Введите сумму предложения">
+  </label>
+  <label class="input-label">Показывать предложение на странице
+    <i>(если "Да" - поставьте галочку, "Нет" - оставьте пустым)</i>
+    <input type="checkbox" class="input-item" formControlName="showOffer">
+  </label>
+</form>

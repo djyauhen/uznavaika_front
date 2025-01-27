@@ -1,0 +1,52 @@
+<form class="input-items" [formGroup]="documentForm" (change)="documentChange()">
+  <label class="input-label">Название документа
+    <input type="text" formControlName="title" class="input-item" placeholder="Введите название документа">
+  </label>
+
+  <label class="input-label">
+    <label for="photoInput" class="btn-primary">
+      {{ coverUrl ? 'Изменить фото' : 'Загрузить фото' }}
+    </label>
+    <input
+      type="file"
+      id="photoInput"
+      (change)="onCoverSelected($event)"
+      accept="image/*"
+    />
+  </label>
+
+  <div class="input-label">
+    <img
+      *ngIf="coverUrl"
+      src="{{coverUrl}}"
+      alt="Фото"
+      class="photo-preview"
+    />
+    <div *ngIf="!coverUrl" >
+      Фото отсутствует
+    </div>
+  </div>
+
+  <label class="input-label">
+    <label for="fileInput" class="btn-primary">
+      {{ documentUrl ? 'Изменить файл' : 'Загрузить файл' }}
+    </label>
+    <input
+      type="file"
+      id="fileInput"
+      (change)="onFileSelected($event)"
+    />
+  </label>
+
+  <div class="input-label">
+    <div *ngIf="!documentUrl && !(documentItem && documentItem?.documentHash && documentItem.documentHash)" >
+      Файл отсутствует
+    </div>
+    <div *ngIf="documentUrl && (documentItem && documentItem?.documentHash && documentItem.documentHash)" >
+      <a href="{{environment.api}}{{documentItem!.documentHash!}}" target="_blank">Открыть документ</a>
+    </div>
+    <div *ngIf="documentUrl && !(documentItem && documentItem?.documentHash && documentItem.documentHash)" >
+      Документ загружен
+    </div>
+  </div>
+</form>

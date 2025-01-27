@@ -1,0 +1,44 @@
+<div class="input-items" [formGroup]="teacherForm" (change)="teacherChange()">
+  <label class="input-label">Ф.И.О.
+    <input type="text" formControlName="full_name" class="input-item" placeholder="Введите Ф.И.О.">
+  </label>
+  <label class="input-label">Должность
+    <input type="text" class="input-item" formControlName="post" placeholder="Введите должность">
+  </label>
+
+  <label class="input-label">Образование
+      <p-editor id="editor" formControlName="study" (onTextChange)="onEditorContentChange()" [placeholder]="'Введите описание занятия'">
+        <ng-template #header>
+        <span class="ql-formats">
+            <button type="button" class="ql-bold" aria-label="Bold"></button>
+            <button type="button" class="ql-italic" aria-label="Italic"></button>
+            <button type="button" class="ql-underline" aria-label="Underline"></button>
+        </span>
+        </ng-template>
+      </p-editor>
+  </label>
+
+  <label class="input-label">
+    <label for="photoInput" class="btn-primary">
+      {{ photoUrl ? 'Изменить фото' : 'Загрузить фото' }}
+    </label>
+    <input
+      type="file"
+      id="photoInput"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+    />
+  </label>
+
+  <div class="input-label">
+    <img
+      *ngIf="photoUrl"
+      src="{{photoUrl}}"
+      alt="Фото"
+      class="photo-preview"
+    />
+    <div *ngIf="!photoUrl" >
+      Фото отсутствует
+    </div>
+  </div>
+</div>

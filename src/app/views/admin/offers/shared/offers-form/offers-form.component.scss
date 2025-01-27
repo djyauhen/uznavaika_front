@@ -1,0 +1,13 @@
+@import '../../offers.component';
+
+
+.input-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .input-item[type="checkbox"] {
+    width: 15px;
+    text-align: left;
+  }
+}

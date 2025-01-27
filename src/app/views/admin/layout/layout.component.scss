@@ -1,0 +1,23 @@
+@import '../../../../../styles/vars';
+@import '../../../../../styles/mixins';
+@import '../../../../../styles/fonts';
+@import '../admin.component';
+
+.layout {
+  display: flex;
+}
+
+app-sidebar {
+  display: block;
+  width: 200px;
+}
+
+@media screen and (max-width: 767px){
+  .layout {
+    flex-direction: column;
+  }
+
+  app-sidebar {
+    width: 100%;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="title">Редактировать документ</h1>
+  <document-form (documentCreate)="changeDocument($event)"></document-form>
+  <div class="actions">
+    <button class="btn agree-btn" (click)="updateDocument()">Создать</button>
+    <button class="btn disagree-btn" (click)="goBack()">Отмена</button>
+  </div>
+</div>
