@@ -68,7 +68,7 @@
   padding: 15px;
   cursor: pointer;
 
-  @media screen and (max-width: 767px){
+  @media screen and (max-width: 767px) {
     font-size: 16px;
   }
 }
@@ -114,4 +114,30 @@
   border-radius: 5px;
   @include admin-text-p2;
   outline: none;
+}
+
+//Site
+//buttons
+
+@mixin site-btn-yellow {
+  @include menu-btn-text;
+  box-sizing: border-box;
+  border: 1px solid $admin-yellow-color;
+  background: $admin-yellow-color;
+  padding: 10px;
+  color: $admin-brown-color;
+  text-transform: uppercase;
+  border-radius: 16px;
+
+  &:hover {
+    border: 1px solid $admin-brown-color;
+    cursor: pointer;
+  }
+}
+
+//text
+@mixin menu-btn-text {
+  @include admin-title;
+  font-size: 14px;
+  line-height: 22px;
 }

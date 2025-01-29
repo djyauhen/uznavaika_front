@@ -31,8 +31,12 @@ import {OfferUpdateComponent} from "./views/admin/offers/update/update.component
 import {PhotosComponent} from "./views/admin/photos/photos.component";
 import {PhotoMainComponent} from "./views/admin/photos/main/main.component";
 import {PhotoCreateComponent} from "./views/admin/photos/create/create.component";
+import {SiteComponent} from "./views/site/site.component";
 
 export const routes: Routes = [
+  {
+    path: '', component: SiteComponent, pathMatch: "full"
+  },
   {
     path: '',
     component: AdminComponent,
@@ -91,7 +95,7 @@ export const routes: Routes = [
           {path: 'login', component: LoginComponent},
           // {path: 'registration', component: LoginComponent},
         ]
-      }
+      },
     ]
-  }
+  },
 ];
