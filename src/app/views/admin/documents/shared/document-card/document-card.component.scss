@@ -27,12 +27,13 @@
     @include admin-text-p3;
 
     img {
-      max-width: 250px;
+      max-height: 250px;
       width: auto;
       height: auto;
     }
 
     a {
+      display: flex;
       text-decoration: none;
       color: $admin-brown-color;
 

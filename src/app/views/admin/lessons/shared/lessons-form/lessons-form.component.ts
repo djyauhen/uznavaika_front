@@ -168,6 +168,8 @@ export class LessonsFormComponent {
       }
       this.lessonCreate.emit(this.lesson);
     }
+
+    console.log(this.lesson);
   }
 
   changeDesc() {

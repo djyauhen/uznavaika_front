@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {DocumentFormComponent} from "../../documents/shared/document-form/document-form.component";
 import {Location, NgIf} from "@angular/common";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import { Router} from "@angular/router";
 import {PhotosService} from "../../../../shared/services/photos.service";
-import {TeacherType} from "../../../../../../types/teacher.type";
 import {DefaultResponseType} from "../../../../../../types/default-response.type";
 import {PhotoType} from "../../../../../../types/photo.type";
 
@@ -63,8 +62,8 @@ export class PhotoCreateComponent {
   }
 
   createPhoto() {
+    console.log(this.photo);
     if (this.photo && this.photo.has('file')) {
-      console.log(this.photo);
       this.photosService.createPhoto(this.photo)
         .subscribe({
           next: (data: PhotoType | DefaultResponseType) => {
