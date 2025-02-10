@@ -45,6 +45,17 @@
   font-style: italic;
 }
 @font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-Medium.eot');
+  src: local('Gilroy Medium'), local('../public/fonts/Gilroy-Medium'),
+  url('../public/fonts/Gilroy-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Gilroy-Medium.woff2') format('woff2'),
+  url('../public/fonts/Gilroy-Medium.woff') format('woff'),
+  url('../public/fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Adigiana 2';
   src: url('../public/fonts/adigiana2.ttf');
 }

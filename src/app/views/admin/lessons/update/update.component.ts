@@ -25,6 +25,7 @@ export class LessonUpdateComponent {
 
   changeLesson(lessonItem: LessonType) {
     this.lesson = lessonItem;
+    console.log(this.lesson);
   }
 
   updateLesson() {

@@ -22,9 +22,13 @@
     "@angular/router": "^18.2.0",
     "@primeng/themes": "^18.0.2",
     "dotenv": "^16.4.7",
+    "ng-swiper": "^1.0.9",
+    "ngx-mask": "^18.0.0",
+    "ngx-owl-carousel-o": "^18.0.0",
     "primeng": "^18.0.2",
     "quill": "^2.0.3",
     "rxjs": "~7.8.0",
+    "swiper": "^6.8.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },

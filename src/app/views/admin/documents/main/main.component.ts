@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
-import {TeacherType} from "../../../../../../types/teacher.type";
-import {TeacherService} from "../../../../shared/services/teacher.service";
 import {DefaultResponseType} from "../../../../../../types/default-response.type";
 import {DocumentType} from "../../../../../../types/document.type";
 import {DocumentService} from "../../../../shared/services/document.service";

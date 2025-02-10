@@ -8,7 +8,7 @@ export class LessonAmountPipe implements PipeTransform {
 
   transform(value: number | null | undefined): string {
     if (value && value !== 0) {
-      return `${value} руб`;
+      return `${value} ₽`;
     } else if (value === 0) {
       return 'Бесплатно';
     }

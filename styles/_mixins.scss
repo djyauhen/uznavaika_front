@@ -28,6 +28,13 @@
   line-height: 26px;
 }
 
+@mixin admin-title-h5 {
+  @include admin-title;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
 @mixin admin-text-p1 {
   @include admin-title;
   font-size: 20px;
@@ -48,8 +55,8 @@
 
 @mixin admin-text-p4 {
   @include admin-title;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 11px;
+  line-height: 15px;
 }
 
 //Admin buttons
@@ -135,9 +142,34 @@
   }
 }
 
+@mixin site-btn-blue {
+  display: flex;
+  box-shadow: 2px 2px 6px 0 rgba(2, 47, 43, 0.3) inset;
+  background: $admin-turquoise-color;
+  padding: 20px 40px;
+  border: 0;
+  gap: 10px;
+  border-radius: 36px;
+  cursor: pointer;
+  @include site-btn-text;
+  align-items: center;
+
+  &:hover {
+    background: $admin-turquoise-brightly-color
+  }
+}
+
 //text
 @mixin menu-btn-text {
   @include admin-title;
   font-size: 14px;
   line-height: 22px;
+}
+
+//text
+@mixin site-btn-text {
+  @include admin-title;
+  font-size: 20px;
+  line-height: 28px;
+  text-transform: uppercase;
 }

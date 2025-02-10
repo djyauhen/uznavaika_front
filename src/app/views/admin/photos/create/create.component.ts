@@ -62,7 +62,7 @@ export class PhotoCreateComponent {
   }
 
   createPhoto() {
-    console.log(this.photo);
+    // console.log(this.photo);
     if (this.photo && this.photo.has('file')) {
       this.photosService.createPhoto(this.photo)
         .subscribe({

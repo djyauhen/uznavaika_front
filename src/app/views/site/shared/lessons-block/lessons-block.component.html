@@ -1,0 +1,50 @@
+<article class="lessons-card-block" *ngIf="categoryLessons && categoryLessons.length > 0">
+  <section class="lesson-card-item" *ngFor="let lesson of categoryLessons; let i = index">
+    <article class="lesson-container lesson-container-wide" *ngIf="i % 2 === 0">
+      <h4 class="lesson-card-header">
+        {{ lesson.name }}
+      </h4>
+      <div class="lesson-card-age">
+        {{ lesson.age }}
+      </div>
+      <section class="lesson-card-text" [innerHtml]="lesson.description"></section>
+      <section class="lesson-actions">
+        <button class="btn lesson-btn" *ngFor="let button of lesson.types_class"><span
+          class="amount">{{ button.amount | lessonAmount }}</span><span class="type">{{ button.class_name }}</span>
+        </button>
+        <button class="btn btn-blue btn-lesson" (click)="scrollTo()">подробнее
+          <svg class="icon">
+            <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16"></use>
+          </svg>
+        </button>
+      </section>
+
+    </article>
+    <article class="lesson-container lesson-container-narrow" *ngIf="i % 2 === 1">
+      <h4 class="lesson-card-header">
+        {{ lesson.name }}
+      </h4>
+      <div class="lesson-card-age">
+        {{ lesson.age }}
+      </div>
+      <section class="lesson-card-text" [innerHTML]="lesson.description"></section>
+
+      <section class="lesson-actions">
+        <button class="btn lesson-btn" [class.two-amount]="lesson.types_class.length > 1">
+          <span class="amount"> <span
+            *ngFor="let button of lesson.types_class; let i = index">{{ button.amount | lessonAmount }}<span
+            class="slash"
+            *ngIf="(lesson.types_class.length > 1) && (i !== (lesson.types_class.length -1 ))">/</span></span> </span>
+          <span class="type"><span *ngFor="let button of lesson.types_class; let i = index">{{ button.class_name }}<span
+              class="slash"
+              *ngIf="(lesson.types_class.length > 1) && (i !== lesson.types_class.length - 1)">/</span></span> </span>
+        </button>
+        <button class="btn btn-blue btn-lesson" (click)="scrollTo()">подробнее
+          <svg class="icon">
+            <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16"></use>
+          </svg>
+        </button>
+      </section>
+    </article>
+  </section>
+</article>

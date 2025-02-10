@@ -20,7 +20,7 @@
           <!-- Тело таблицы -->
           <tbody>
           <tr *ngFor="let teacher of teachers">
-            <td>{{ teacher.full_name }}</td>
+            <td>{{ teacher.name }} <br> {{ teacher.patronymic }}</td>
             <td>{{ teacher.post }}</td>
             <td [innerHTML]="teacher.study"></td>
           </tr>

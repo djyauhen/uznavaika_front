@@ -37,7 +37,9 @@ export class TeacherFormComponent {
 
   ngOnInit() {
     this.teacherForm = this.fb.group({
-      full_name: ['', Validators.required],
+      surname: ['', Validators.required],
+      name: ['', Validators.required],
+      patronymic: ['', Validators.required],
       post: ['', Validators.required],
       study: ['', Validators.required],
       path: '',
@@ -54,11 +56,13 @@ export class TeacherFormComponent {
             }
 
             this.teacher = data as TeacherType;
-            const {full_name, post, study, path} = this.teacher
+            const {surname, name, patronymic, post, study, path} = this.teacher
 
-            if (full_name && post && study) {
+            if (surname && name && patronymic && post && study) {
               this.teacherForm.patchValue({
-                full_name,
+                surname,
+                name,
+                patronymic,
                 post,
                 study,
                 path: path ?? null
@@ -73,16 +77,14 @@ export class TeacherFormComponent {
   }
 
   teacherChange() {
-    if (this.teacherForm && this.teacherForm.value.full_name && this.teacherForm.value.post && this.teacherForm.value.study && (this.teacherForm.value.path || this.fileToUpload)) {
+    if (this.teacherForm && this.teacherForm.value.surname && this.teacherForm.value.name && this.teacherForm.value.patronymic && this.teacherForm.value.post && this.teacherForm.value.study && (this.teacherForm.value.path || this.fileToUpload)) {
 
       const teacherUpdate = new FormData();
-      teacherUpdate.append("full_name", this.teacherForm.get('full_name')!.value!);
+      teacherUpdate.append("surname", this.teacherForm.get('surname')!.value!);
+      teacherUpdate.append("name", this.teacherForm.get('name')!.value!);
+      teacherUpdate.append("patronymic", this.teacherForm.get('patronymic')!.value!);
       teacherUpdate.append("post", this.teacherForm.get('post')!.value!);
-      teacherUpdate.append("study", this.teacherForm.get('study')!.value!);
-
-      if (this.teacherForm.value.path) {
-        teacherUpdate.append("path", this.teacherForm.get('path')!.value!);
-      }
+      teacherUpdate.append("study", this.teacherForm.get('study')!.value!.replace(/&nbsp;/g, ' '));
 
       if (this.fileToUpload) {
         teacherUpdate.append("photo", this.fileToUpload);

@@ -1,9 +1,15 @@
 <div class="input-items" [formGroup]="teacherForm" (change)="teacherChange()">
-  <label class="input-label">Ф.И.О.
-    <input type="text" formControlName="full_name" class="input-item" placeholder="Введите Ф.И.О.">
+  <label class="input-label">Фамилия
+    <input type="text" formControlName="surname" class="input-item" placeholder="Введите фамилию">
+  </label>
+  <label class="input-label">Имя
+    <input type="text" formControlName="name" class="input-item" placeholder="Введите имя">
+  </label>
+  <label class="input-label">Отчество
+    <input type="text" formControlName="patronymic" class="input-item" placeholder="Введите отчество">
   </label>
   <label class="input-label">Должность
-    <input type="text" class="input-item" formControlName="post" placeholder="Введите должность">
+    <textarea type="text" class="input-item" formControlName="post" placeholder="Введите должность"></textarea>
   </label>
 
   <label class="input-label">Образование

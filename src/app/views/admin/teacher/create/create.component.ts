@@ -25,10 +25,12 @@ export class TeacherCreateComponent {
 
 
   changeTeacher(teacherItem: FormData) {
+    console.log(this.teacher);
     this.teacher = teacherItem;
   }
 
   createTeacher() {
+    console.log(this.teacher);
     if (this.teacher) {
       console.log(this.teacher);
       this.teacherService.createTeacher(this.teacher)

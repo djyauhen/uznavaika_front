@@ -36,36 +36,6 @@ export class LessonsFormComponent {
     subscription_amount: [0],
   });
 
-  editorConfig = {
-    enableToolbar: true,
-    showToolbar: true,
-    editable: true,
-    customClasses: [
-      {
-        name: 'input-item',
-        class: 'input-item',
-      },
-    ],
-    toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      ['undo', 'redo', 'subscript', 'superscript', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull',
-        'indent', 'outdent', 'heading', 'fontName'],
-      [
-        'fontSize',
-        'textColor',
-        'backgroundColor',
-        'customClasses',
-        'link',
-        'unlink',
-        'insertImage',
-        'insertVideo',
-        'insertHorizontalRule',
-        'removeFormat',
-        'toggleEditorMode'
-      ]
-    ]
-  };
-
   constructor(private readonly categoriesService: CategoriesService,
               private readonly lessonsService: LessonsService,
               private readonly route: Router,
@@ -153,7 +123,7 @@ export class LessonsFormComponent {
         this.lesson.name = this.lessonForm.value.name;
         this.lesson.category_id = this.lessonForm.value.category_id;
         this.lesson.age = this.lessonForm.value.age;
-        this.lesson.description = this.lessonForm.value.description;
+        this.lesson.description = this.lessonForm.value.description.replace(/&nbsp;/g, ' ');
         this.lesson.subscription_amount = this.lessonForm.value.subscription_amount;
         this.lesson.types_class = this.lessonForm.value.types_class as TypeCategory[];
       } else {
@@ -161,7 +131,7 @@ export class LessonsFormComponent {
           name: this.lessonForm.value.name,
           category_id: this.lessonForm.value.category_id,
           age: this.lessonForm.value.age,
-          description: this.lessonForm.value.description,
+          description: this.lessonForm.value.description.replace(/&nbsp;/g, ' '),
           subscription_amount: this.lessonForm.value.subscription_amount,
           types_class: this.lessonForm.value.types_class as TypeCategory[],
         }
@@ -169,10 +139,11 @@ export class LessonsFormComponent {
       this.lessonCreate.emit(this.lesson);
     }
 
-    console.log(this.lesson);
+    console.log(this.lesson?.description);
   }
 
   changeDesc() {
+    console.log(this.lessonForm.value.description);
     this.lessonChange();
   }
 }

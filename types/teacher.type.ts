@@ -1,6 +1,8 @@
 export type TeacherType = {
   _id?: string;
-  full_name: string;
+  surname: string;
+  name: string;
+  patronymic: string;
   post: string;
   study: string;
   path?: string;

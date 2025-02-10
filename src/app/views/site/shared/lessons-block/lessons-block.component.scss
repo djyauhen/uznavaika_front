@@ -1,0 +1,138 @@
+@import "../../site.component";
+
+::ng-deep .lessons-card-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 53px 32px;
+  justify-content: space-between;
+
+  .lesson-card-item {
+
+    .lesson-container {
+      position: relative;
+      border: 3px solid $admin-orange-color;
+      border-radius: 16px;
+      background: $admin-yellow-light-color;
+      height: 100%;
+      max-width: 710px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .lesson-card-header {
+        width: 100%;
+        border-radius: 12px 12px 16px 16px;
+        padding: 27px;
+        background-color: $admin-orange-color;
+        @include admin-title-h3;
+        color: $admin-yellow-light-color;
+        font-family: "Adigiana 2", sans-serif;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .lesson-card-age {
+        position: absolute;
+        top: -23px;
+        right: -3px;
+        padding: 10px 20px;
+        border-radius: 16px;
+        background-color: $admin-red-color;
+        @include admin-text-p2;
+        color: $admin-yellow-light-color;
+        font-family: "Adigiana 2", sans-serif;
+      }
+
+      .lesson-card-text {
+        padding: 20px 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        @include admin-text-p3;
+
+        p {
+          display: inline-grid;
+          max-width: unset;
+        }
+
+        ul {
+          list-style: none; /* Убираем стандартные маркеры */
+          padding-left: 0; /* Убираем отступ слева */
+
+          li {
+            position: relative;
+            padding-left: 24px; /* Отступ для иконки */
+            margin: 0;
+
+            &::before {
+              content: ''; /* Обязательное свойство для псевдоэлемента */
+              position: absolute;
+              left: 0;
+              top: 11px;
+              transform: translateY(-50%);
+              width: 22px; /* Ширина иконки */
+              height: 22px; /* Высота иконки */
+              background-image: url('../../../../../../public/images/star.png'); /* Путь к иконке */
+              background-size: auto; /* Масштабирование иконки */
+            }
+          }
+        }
+      }
+
+      .lesson-actions {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        padding: 60px 25px;
+        margin-top: auto;
+
+        .lesson-btn {
+          @include site-btn-yellow;
+          padding: 16px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            cursor: inherit;
+            border: 1px solid transparent;
+          }
+
+          .amount {
+            display: block;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 22px;
+          }
+
+          .type {
+            display: block;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 12px;
+            text-transform: uppercase;
+          }
+
+          &.two-amount {
+            padding: 10px;
+          }
+        }
+
+        .btn-blue {
+          @include site-btn-blue;
+
+          .icon {
+            width: 22px;
+            height: 16px;
+          }
+        }
+      }
+
+      &.lesson-container-narrow {
+        max-width: 498px;
+      }
+    }
+  }
+}

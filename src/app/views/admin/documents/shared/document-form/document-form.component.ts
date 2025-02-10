@@ -74,13 +74,6 @@ export class DocumentFormComponent {
       const documentUpdate = new FormData();
       documentUpdate.append("title", this.documentForm.get('title')!.value!);
 
-      if (this.documentForm.value.documentHash) {
-        documentUpdate.append("documentHash", this.documentForm.get('documentHash')!.value!);
-      }
-      if (this.documentForm.value.documentCover) {
-        documentUpdate.append("documentCover", this.documentForm.get('documentCover')!.value!);
-      }
-
       if (this.documentFile) {
         documentUpdate.append("file", this.documentFile);
       }
