@@ -14,6 +14,11 @@
   @include admin-title;
   font-size: 58px;
   line-height: 64px;
+
+  @media screen and (max-width: 1299px){
+    font-size: 42px;
+    line-height: 46px;
+  }
 }
 
 @mixin admin-title-h3 {
@@ -45,6 +50,11 @@
   @include admin-title;
   font-size: 18px;
   line-height: 26px;
+
+  @media screen and (max-width: 1299px){
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 @mixin admin-text-p3 {

@@ -33,19 +33,24 @@
           </span>
         </button>
       </section>
+
+      <button id="menu-btn" (click)="openMenu()">
+        <svg class="icon">
+          <use href="images/icons/sprite.svg#mobile-menu"></use>
+        </svg>
+      </button>
     </article>
   </header>
 
   <article class="main-screen-right">
     <section class="container">
       <h1 class="title site-title">
-        подготовим <span class="title-bg-child">вашего ребёнка</span> <span
-        class="title-bg-school"> к  школе и жизни!</span>
+        подготовим <br> <span class="title-bg-child">вашего ребёнка</span> <br> <span
+        class="title-bg-school"> к школе и жизни!</span>
       </h1>
-      <p class="subtitle">
-        Гарантируем, что ваш ребёнок получит знания<br/>
-        и все необходимые навыки, для успешного старта<br/>
-        в школе!
+      <div class="small-window-image"></div>
+      <p
+        class="subtitle"> {{ "Гарантируем, что ваш ребёнок получит знания и все необходимые навыки, для успешного старта в школе!" | nbspAfterPrepositions }}
       </p>
       <button class="btn btn-main-screen" (click)="scrollTo()">
         оставить заявку
@@ -57,7 +62,26 @@
       <div class="bg-rainbow"></div>
     </section>
   </article>
-  <div class="bg-line"></div>
+
+  <article class="main-screen-right mobile-menu" id="mobile-menu">
+    <section class="container">
+      <ul class="menu-items">
+        <li class="menu-item" routerLink="/" fragment="welcome" (click)="closeMenu()"><a class="menu-item-link">Почему
+          именно мы?</a></li>
+        <li class="menu-item" routerLink="/" fragment="teacherBlock" (click)="closeMenu()"><a class="menu-item-link">Педагоги</a>
+        </li>
+        <li class="menu-item" routerLink="/" fragment="directions" (click)="closeMenu()"><a class="menu-item-link">Направления</a>
+        </li>
+        <li class="menu-item" routerLink="/" fragment="reviews" (click)="closeMenu()"><a
+          class="menu-item-link">Отзывы</a></li>
+      </ul>
+    </section>
+    <button id="close-menu-btn" (click)="closeMenu()">
+      <svg class="icon">
+        <use href="images/icons/sprite.svg#close"></use>
+      </svg>
+    </button>
+  </article>
 </section>
 
 <section class="welcome" id="welcome">
@@ -79,7 +103,10 @@
     <section class="advantage-items">
       <article class="advantage-item" *ngFor="let advantage of advantages">
         <p class="advantage-item-title">{{ advantage.title }}</p>
-        <p class="advantage-item-description">{{ advantage.description }}</p>
+        <p class="advantage-item-description"
+           *ngIf="!mobileVersion">{{ advantage.description | nbspAfterPrepositions }}</p>
+        <p class="advantage-item-description"
+           *ngIf="mobileVersion">{{ advantage.subscription | nbspAfterPrepositions }}</p>
       </article>
     </section>
   </article>
@@ -125,8 +152,7 @@
     <h1 class="title">наши педагоги: <br/>
       сердце и душа центра</h1>
     <p class="description">
-      Коллектив нашего центра очень дружный, и он идёт в одном направлении, <br/>
-      к единой цели — дать детям самое лучшее.
+      {{ "Коллектив нашего центра очень дружный, и он идёт в одном направлении, к единой цели — дать детям самое лучшее." | nbspAfterPrepositions }}
     </p>
 
     <section class="teachers-block">
@@ -137,10 +163,10 @@
                    style="background-image: url({{environment.api}}{{teacher.path}})"></section>
           <section class="teacher-info-block">
             <p class="name-patronymic">
-              <span>{{ teacher.name }}</span> <br>
+              <span>{{ teacher.name }} </span> <br *ngIf="!mobileVersion">
               <span>{{ teacher.patronymic }}</span>
             </p>
-            <p class="text" [innerHTML]="teacher.post"></p>
+            <p class="text" [innerHTML]="teacher.post | nbspAfterPrepositions | sanitizeHtml"></p>
           </section>
         </button>
       </article>
@@ -154,9 +180,10 @@
             <p>{{ selectedTeacher.name }} {{ selectedTeacher.patronymic }}</p>
           </article>
           <article class="teacher-card-description">
-            <p>{{ selectedTeacher.post }}</p>
+            <p>{{ selectedTeacher.post | nbspAfterPrepositions }}</p>
             <p class="teacher-card-description-post">ОБРАЗОВАНИЕ:</p>
-            <section class="teacher-card-description-study" [innerHTML]="selectedTeacher.study"></section>
+            <section class="teacher-card-description-study"
+                     [innerHTML]="selectedTeacher.study | nbspAfterPrepositions | sanitizeHtml"></section>
           </article>
         </section>
       </article>
@@ -177,24 +204,29 @@
       <ng-template carouselSlide *ngFor="let slide of slidesPhotos; let i = index">
         <div class="container-photos" [ngSwitch]="i % 3">
           <div *ngSwitchCase="0">
-            <div class="photos-block first-slide">
+            <div class="photos-block first-slide" [class.two-photo-slide]="slide.photos.length === 2"
+                 [class.one-photo-slide]="slide.photos.lenght === 1">
               <img *ngFor="let photo of slide.photos; let photoIndex = index"
                    style="background-image: url({{environment.api+photo.path}})" alt=""
                    class="photos-item photos-item-{{photoIndex}}">
             </div>
           </div>
-          <div class="photos-block second-slide" *ngSwitchCase="1">
-            <img *ngFor="let photo of slide.photos; let photoIndex = index" [src]="environment.api+photo.path" alt=""
+          <div class="photos-block second-slide" *ngSwitchCase="1" [class.two-photo-slide]="slide.photos.length === 2"
+               [class.one-photo-slide]="slide.photos.lenght === 1">
+            <img *ngFor="let photo of slide.photos; let photoIndex = index"
+                 style="background-image: url({{environment.api+photo.path}})" alt=""
                  class="photos-item photos-item-{{photoIndex}}">
           </div>
-          <div class="photos-block third-slide" *ngSwitchCase="2">
-            <img *ngFor="let photo of slide.photos; let photoIndex = index" [src]="environment.api+photo.path" alt=""
+          <div class="photos-block third-slide" *ngSwitchCase="2" [class.two-photo-slide]="slide.photos.length === 2"
+               [class.one-photo-slide]="slide.photos.lenght === 1">
+            <img *ngFor="let photo of slide.photos; let photoIndex = index"
+                 style="background-image: url({{environment.api+photo.path}})" alt=""
                  class="photos-item photos-item-{{photoIndex}}">
           </div>
         </div>
       </ng-template>
     </owl-carousel-o>
-    <section class="slide-actions">
+    <section class="slide-actions" *ngIf="!mobileVersion">
       <svg class="icon" [class.disabled]="isFirstSlide" (click)="owlCarPhotos!.prev()">
         <path
           d="M16.1111 12.5556L20.5556 8.11111M20.5556 25.8889L11.6667 17M33 17C33 25.8366 25.8366 33 17 33C8.16344 33 1 25.8366 1 17C1 8.16344 8.16344 1 17 1C25.8366 1 33 8.16344 33 17Z"
@@ -221,7 +253,7 @@
     </h1>
     <owl-carousel-o #owlCarReviews
                     [options]="customOptionsReviews" class="slider-container">
-      <ng-template carouselSlide>
+      <ng-template carouselSlide *ngIf="!smallReviewSlides">
         <section class="slide-container">
           <img src="images/reviews/rev1.png" class="left-side left-top" alt="Отзыв 1">
           <img src="images/reviews/rev2.png" class="right-side right-top" alt="Отзыв 2">
@@ -229,14 +261,14 @@
           <img src="images/reviews/rev4.png" class="right-side right-bottom" alt="Отзыв 4">
         </section>
       </ng-template>
-      <ng-template carouselSlide>
+      <ng-template carouselSlide *ngIf="!smallReviewSlides">
         <section class="slide-container left-all">
           <img src="images/reviews/rev5.png" class="left-side" alt="Отзыв 1">
           <img src="images/reviews/rev6.png" class="right-side right-top" alt="Отзыв 2">
           <img src="images/reviews/rev7.png" class="right-side right-bottom" alt="Отзыв 3">
         </section>
       </ng-template>
-      <ng-template carouselSlide>
+      <ng-template carouselSlide *ngIf="!smallReviewSlides">
         <section class="slide-container">
           <img src="images/reviews/rev8.png" class="left-side left-top" alt="Отзыв 1">
           <img src="images/reviews/rev9.png" class="right-side right-top" alt="Отзыв 2">
@@ -244,8 +276,45 @@
           <img src="images/reviews/rev11.png" class="right-side right-bottom" alt="Отзыв 4">
         </section>
       </ng-template>
+
+
+      <ng-template carouselSlide *ngIf="smallReviewSlides">
+        <section class="slide-container">
+          <img src="images/reviews/rev1.png" class="top" alt="Отзыв 1">
+          <img src="images/reviews/rev2.png" class="bottom" alt="Отзыв 2">
+        </section>
+      </ng-template>
+      <ng-template carouselSlide *ngIf="smallReviewSlides">
+        <section class="slide-container">
+          <img src="images/reviews/rev3.png" class="top" alt="Отзыв 3">
+          <img src="images/reviews/rev4.png" class="bottom" alt="Отзыв 4">
+        </section>
+      </ng-template>
+      <ng-template carouselSlide *ngIf="smallReviewSlides">
+        <section class="slide-container slide-with-one">
+          <img src="images/reviews/rev5.png" class="top" alt="Отзыв 1">
+        </section>
+      </ng-template>
+      <ng-template carouselSlide *ngIf="smallReviewSlides">
+        <section class="slide-container">
+          <img src="images/reviews/rev6.png" class="top" alt="Отзыв 2">
+          <img src="images/reviews/rev7.png" class="bottom" alt="Отзыв 3">
+        </section>
+      </ng-template>
+      <ng-template carouselSlide *ngIf="smallReviewSlides">
+        <section class="slide-container">
+          <img src="images/reviews/rev8.png" class="top" alt="Отзыв 1">
+          <img src="images/reviews/rev9.png" class="bottom" alt="Отзыв 2">
+        </section>
+      </ng-template>
+      <ng-template carouselSlide *ngIf="smallReviewSlides">
+        <section class="slide-container">
+          <img src="images/reviews/rev10.png" class="top" alt="Отзыв 3">
+          <img src="images/reviews/rev11.png" class="bottom" alt="Отзыв 4">
+        </section>
+      </ng-template>
     </owl-carousel-o>
-    <section class="slide-actions">
+    <section class="slide-actions" *ngIf="!smallReviewSlides">
       <svg class="icon" (click)="owlCarReviews!.prev()">
         <path
           d="M16.1111 12.5556L20.5556 8.11111M20.5556 25.8889L11.6667 17M33 17C33 25.8366 25.8366 33 17 33C8.16344 33 1 25.8366 1 17C1 8.16344 8.16344 1 17 1C25.8366 1 33 8.16344 33 17Z"
@@ -264,7 +333,8 @@
   <article class="container">
     <div class="bg-kite"></div>
 
-    <h2 class="title"><span class="bg-circle"></span>выгодные предложения
+    <h2 class="title"><span class="bg-circle"></span>выгодные <br *ngIf="mobileVersion"/> предложения <br
+      *ngIf="smallReviewSlides && !mobileVersion"/>
       в {{ thisMonth }}
       <div class="bg-arrow-line"></div>
     </h2>
@@ -274,7 +344,7 @@
         <article class="offer-container " [class.offer-container-wide]="i % 2 === 0"
                  [class.offer-container-narrow]="i % 2 === 1">
           <h4 class="offer-card-header">
-            {{ offer.title }}
+            {{ offer.title | nbspAfterPrepositions }}
           </h4>
           <button class="btn offer-btn"><span
             class="new-amount">{{ Number(offer.newPrice) | lessonAmount }}</span><span *ngIf="offer.oldPrice"
@@ -306,9 +376,8 @@
     <section class="order-block">
       <h2 class="title">ждём вашего
         ребёнка на занятиях!</h2>
-      <p class="subtitle">Заполните ваши данные и наш администратор свяжется с вами
-        и расскажет, как наш развивающий центр может изменить жизнь
-        вашего ребёнка!</p>
+      <p
+        class="subtitle">{{ "Заполните ваши данные и наш администратор свяжется с вами и расскажет, как наш развивающий центр может изменить жизнь вашего ребёнка!" | nbspAfterPrepositions }}</p>
       <form class="order-form" [formGroup]="orderForm">
         <section class="order-inputs">
           <article class="form-item">
@@ -378,7 +447,7 @@
            style="background-image: url({{environment.api + doc.documentCover}})"></a>
       </ng-template>
     </owl-carousel-o>
-    <section class="slide-actions">
+    <section class="slide-actions" *ngIf="!mobileVersion">
       <svg class="icon" [class.disabled]="isFirstSlideDoc" (click)="owlCarDocuments!.prev()">
         <path
           d="M16.1111 12.5556L20.5556 8.11111M20.5556 25.8889L11.6667 17M33 17C33 25.8366 25.8366 33 17 33C8.16344 33 1 25.8366 1 17C1 8.16344 8.16344 1 17 1C25.8366 1 33 8.16344 33 17Z"
@@ -402,36 +471,34 @@
     <div class="bg-heart-yellow"></div>
     <div class="bg-heart-red"></div>
 
-    <section class="left-part">
-      <article class="top-part">
-        <section class="logo-item">
-          <img src="images/logo.png" alt="Логотип">
-        </section>
-        <section class="list">
-          <ul>
-            <li class="list-item list-h4">О НАС</li>
-            <li class="list-item" routerLink="/" fragment="directions">Направления</li>
-            <li class="list-item" routerLink="/" fragment="teacherBlock">Педагоги</li>
-            <li class="list-item" routerLink="/" fragment="reviews">Отзывы</li>
-          </ul>
-        </section>
-        <section class="social">
-          <article class="social-title">мы в соцсетях</article>
-          <a href="https://vk.com/club_usnawajka" target="_blank" class="social-icon">
-            <svg class="icon">
-              <use href="images/icons/sprite.svg#vk-icon"></use>
-            </svg>
-            Вконтакте
-          </a>
-        </section>
+    <section class="top-part">
+      <article class="logo-item">
+        <img src="images/logo.png" alt="Логотип">
       </article>
-      <article class="bottom-part">
-        <section>Индивидуальный предприниматель Ишков А. И.</section>
-        <section>ИНН 361900561504</section>
+      <article class="list">
+        <ul>
+          <li class="list-item list-h4">О НАС</li>
+          <li class="list-item" routerLink="/" fragment="directions">Направления</li>
+          <li class="list-item" routerLink="/" fragment="teacherBlock">Педагоги</li>
+          <li class="list-item" routerLink="/" fragment="reviews">Отзывы</li>
+        </ul>
+      </article>
+      <article class="social">
+        <section class="social-title">мы в соцсетях</section>
+        <a href="https://vk.com/club_usnawajka" target="_blank" class="social-icon">
+          <svg class="icon">
+            <use href="images/icons/sprite.svg#vk-icon"></use>
+          </svg>
+          Вконтакте
+        </a>
       </article>
     </section>
+    <section class="bottom-part">
+      <section>Индивидуальный предприниматель Ишков А. И.</section>
+      <section>ИНН 361900561504</section>
+    </section>
     <section class="right-part">
-      <article class="top-part">
+      <article class="right-top-part">
         <section class="top-part-item location">
           <svg class="icon">
             <use href="images/icons/sprite.svg#location"></use>
@@ -451,11 +518,11 @@
           Пн-пт с 10:00 до 20:00, cб с 10:00 до 12:00
         </section>
       </article>
-      <article class="bottom-part">
-        <div style="position:relative;overflow:hidden; width: 498px;height: 246px;">
+      <article class="right-bottom-part">
+        <div class="cart">
           <iframe
             src="https://yandex.by/map-widget/v1/?ll=39.166647%2C51.670309&mode=search&oid=113620547033&ol=biz&sctx=ZAAAAAgBEAAaKAoSCbKDSlzHlENAEQiOy7ip1UlAEhIJxqUqbXGNnz8R2dE41O%2FChj8iBgABAgMEBSgKOABAr80GSAFqAnVhnQHNzMw9oAEAqAEAvQGTw75owgEG2eu%2FoqcDggIs0LTQtdGC0YHQutC40Lkg0YbQtdC90YLRgCDRg9C30L3QsNCy0LDQudC60LCKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=39.166647%2C51.670309&sspn=0.030813%2C0.011114&text=%D0%B4%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%B9%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D1%83%D0%B7%D0%BD%D0%B0%D0%B2%D0%B0%D0%B9%D0%BA%D0%B0&z=16"
-            width="498" height="246" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+            width="100%" height="100%" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
         </div>
       </article>
     </section>

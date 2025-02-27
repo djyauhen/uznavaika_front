@@ -22,6 +22,8 @@ import {LessonAmountPipe} from "../../shared/pipes/lesson-amount.pipe";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgxMaskDirective} from "ngx-mask";
 import {MailService} from "../../shared/services/mail.service";
+import {NbspAfterPrepositionsPipe} from "../../shared/pipes/preposition.pipe";
+import {SanitizeHtmlPipe} from "../../shared/pipes/sanitize-html.pipe";
 
 @Component({
   selector: 'app-site',
@@ -39,6 +41,8 @@ import {MailService} from "../../shared/services/mail.service";
     ReactiveFormsModule,
     NgxMaskDirective,
     NgClass,
+    NbspAfterPrepositionsPipe,
+    SanitizeHtmlPipe,
   ],
   templateUrl: './site.component.html',
   styleUrl: './site.component.scss'
@@ -47,48 +51,64 @@ export class SiteComponent {
   @ViewChild('owlCarPhotos', {static: false}) owlCarPhotos: CarouselComponent | undefined;
   @ViewChild('owlCarDocuments', {static: false}) owlCarDocuments: CarouselComponent | undefined;
 
-  advantages: { title: string, description: string }[] = [
+  advantages: { title: string, description: string, subscription: string }[] = [
     {
       title: 'высококвалифицированные педагоги',
-      description: 'Профессионалы с высоким уровнем квалификации обладают\n' +
-        'актуальными знаниями в области педагогики, психологии и развития детей.\n' +
-        'Их опыт помогает выбирать самые эффективные и современные методики\n' +
-        'обучения, что способствует более глубокому усвоению материала детьми.'
+      description: 'Профессионалы с высоким уровнем квалификации обладают актуальными знаниями в области педагогики, психологии и развития детей. Их опыт помогает выбирать самые эффективные и современные методики обучения, что способствует более глубокому усвоению материала детьми.',
+      subscription: 'Профессионалы с высоким уровнем\n' +
+        'квалификации обладают актуальными знаниями\n' +
+        'в области педагогики, психологии и развития детей,\n' +
+        'а их опыт помогает выбирать самые эффективные\n' +
+        'и современные методики обучения.'
     },
     {
       title: 'долгосрочные результаты',
       description: 'Благодаря нашему подходу, ваш ребёнок не просто готов к школе, он становится самостоятельным, уверенным и инициативной личностью,\n' +
-        'готовым к новым знаниям и вызовам.'
+        'готовым к новым знаниям и вызовам.',
+      subscription: 'Благодаря нашему подходу, ваш ребёнок\n' +
+        'не просто готов к школе, он становится самостоятельным, уверенным и инициативной личностью, готовым к новым знаниям и вызовам.'
     },
     {
       title: 'критическое и креативное мышление',
-      description: 'Научим вашего ребёнка работать в команде, развивать креативность и критическое мышление. Игровые и проектные подходы, помогают размышлять самостоятельно, решать проблемы и находить нестандартные решения.'
+      description: 'Научим вашего ребёнка работать в команде, развивать креативность и критическое мышление. Игровые и проектные подходы, помогают размышлять самостоятельно, решать проблемы и находить нестандартные решения.',
+      subscription: 'Научим вашего ребёнка работать в команде, развивать креативность и критическое мышление. Педагоги, через игровые и проектные подходы, учат детей размышлять самостоятельно, решать проблемы и находить нестандартные решения.'
     },
     {
       title: 'индивидуальный подход',
-      description: 'Прорабатываем персональную концепцию, каждая деталь программы учитывает потребности вашего ребенка: темперамент, интересы и уровень подготовки.'
+      description: 'Прорабатываем персональную концепцию, каждая деталь программы учитывает потребности вашего ребенка: темперамент, интересы и уровень подготовки.',
+      subscription: 'Прорабатываем персональную концепцию, каждая деталь программы учитывает потребности вашего ребенка: темперамент, интересы и уровень подготовки.'
     },
     {
       title: 'Безопасное и дружелюбное окружение',
       description: 'Наш центр обеспечивает безопасные условия для обучения, создавая пространство, где абсолютно каждый ребёнок чувствует себя комфортно,\n' +
-        'уверенно и безопасно, в соответствии с пожарными и санитарными нормами.'
+        'уверенно и безопасно, в соответствии с пожарными и санитарными нормами.',
+      subscription: 'Наш центр обеспечивает безопасные условия\n' +
+        'для обучения, создавая пространство, где абсолютно каждый ребёнок чувствует себя комфортно, уверенно и безопасно, в соответствии\n' +
+        'с пожарными и санитарными нормами.'
     },
     {
       title: 'творческая атмосфера',
       description: 'Используем игровые методики, творчество\n' +
-        'и мультимедийные технологии, чтобы развить у вашего ребёнка интерес к учебе и желание познавать новое.'
+        'и мультимедийные технологии, чтобы развить у вашего ребёнка интерес к учебе и желание познавать новое.',
+      subscription: 'Используем игровые методики, творчество\n' +
+        'и мультимедийные технологии, чтобы развить\n' +
+        'у вашего ребёнка интерес к учебе и желание познавать новое.'
     },
     {
       title: 'лицензированное учреждение',
       description: 'Наличие лицензии позволяет родителям получать налоговый вычет, \n' +
         'оплачивать занятия материнским капиталом. Так же наличие лицензии\n' +
-        'говорит о том, что все программы утверждены отделом образования.'
+        'говорит о том, что все программы утверждены отделом образования.',
+      subscription: 'Наличие лицензии позволяет родителям получать налоговый вычет, оплачивать занятия материнским капиталом. Так же наличие лицензии говорит о том, что все программы утверждены отделом образования.'
     },
     {
       title: 'забота о здоровье и активности',
       description: 'Благодаря физическому развитию и активным\n' +
         'играм помогаем поддерживать здоровье\n' +
-        'и хорошее настроение детям.'
+        'и хорошее настроение детям.',
+      subscription: 'Включаем в программы занятий физическую активность, благодаря физическому развитию\n' +
+        'и активным играм помогаем поддерживать\n' +
+        'здоровье  и хорошее настроение детям.'
     },
   ];
 
@@ -136,14 +156,26 @@ export class SiteComponent {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    items: 3,
     nav: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      708: {
+        items: 2,
+      },
+      1240: {
+        items: 3,
+      }
+    }
   };
 
   isFirstSlide: boolean = true;
   isLastSlide: boolean = false;
   isFirstSlideDoc: boolean = true;
   isLastSlideDoc: boolean = false;
+  smallReviewSlides: boolean = false;
+  mobileVersion: boolean = false;
 
   fb = inject(FormBuilder);
   orderForm: FormGroup = this.fb.group({
@@ -163,12 +195,17 @@ export class SiteComponent {
   }
 
   ngOnInit() {
+    if (window.innerWidth < 1300) {
+      this.smallReviewSlides = true;
+    }
+    if (window.innerWidth < 768) {
+      this.mobileVersion = true;
+    }
     this.getCategories();
     this.getOffers();
     this.getDocuments();
     this.getPhotos();
     this.getTeachers();
-    console.log(this.thisMonth);
   }
 
   getCategories() {
@@ -258,24 +295,46 @@ export class SiteComponent {
       let slideCount = 1; // Счётчик слайдов
 
       for (let photo of photos) {
-        // Логика для слайдов с 4 фото (1-й, 4-й, 7-й и т.д.)
-        if (slideCount === 1 || ((slideCount - 1) % 3) === 0) {
-          if (currentSlide.length < 4) {
+        if (window.innerWidth > 1299) {
+          // Логика для слайдов с 4 фото (1-й, 4-й, 7-й и т.д.)
+          if ((slideCount - 1) % 3 === 0) {
+            if (currentSlide.length < 4) {
+              currentSlide.push(photo);
+            }
+            // Если накапливаем 4 фото, добавляем слайд и увеличиваем счётчик
+            if (currentSlide.length === 4) {
+              slides.push({photos: currentSlide});
+              currentSlide = [];
+              slideCount++;
+            }
+          } else {
+            // Логика для слайдов с 2 фото (все остальные слайды)
+            if (currentSlide.length < 2) {
+              currentSlide.push(photo);
+            }
+            // Если накапливаем 2 фото, добавляем слайд и увеличиваем счётчик
+            if (currentSlide.length === 2) {
+              slides.push({photos: currentSlide});
+              currentSlide = [];
+              slideCount++;
+            }
+          }
+        } else if (window.innerWidth < 1299 && window.innerWidth > 767) {
+          if (currentSlide.length < 3) {
             currentSlide.push(photo);
           }
           // Если накапливаем 4 фото, добавляем слайд и увеличиваем счётчик
-          if (currentSlide.length === 4) {
+          if (currentSlide.length === 3) {
             slides.push({photos: currentSlide});
             currentSlide = [];
             slideCount++;
           }
         } else {
-          // Логика для слайдов с 2 фото (все остальные слайды)
-          if (currentSlide.length < 2) {
+          if (currentSlide.length < 1) {
             currentSlide.push(photo);
           }
-          // Если накапливаем 2 фото, добавляем слайд и увеличиваем счётчик
-          if (currentSlide.length === 2) {
+          // Если накапливаем 4 фото, добавляем слайд и увеличиваем счётчик
+          if (currentSlide.length === 1) {
             slides.push({photos: currentSlide});
             currentSlide = [];
             slideCount++;
@@ -290,10 +349,14 @@ export class SiteComponent {
 
       return slides;
     }
+
     return [];
   }
 
-  changeSlide(event: SlidesOutputData) {
+  changeSlide(event
+                :
+                SlidesOutputData
+  ) {
     if (!this.owlCarPhotos || !this.owlCarPhotos.slidesData) return;
 
     const totalSlides = this.owlCarPhotos.slidesData.length; // Количество слайдов
@@ -303,17 +366,34 @@ export class SiteComponent {
     this.isLastSlide = currentIndex === totalSlides - 1;
   }
 
-  changeSlideDoc(event: SlidesOutputData) {
+  changeSlideDoc(event
+                   :
+                   SlidesOutputData
+  ) {
     if (!this.owlCarDocuments || !this.owlCarDocuments.slidesData) return;
 
     const totalSlides = this.owlCarDocuments.slidesData.length; // Количество слайдов
     const currentIndex = event.startPosition ?? 0; // Текущий индекс слайда
 
-    this.isFirstSlideDoc = currentIndex === 0;
-    this.isLastSlideDoc = currentIndex + 2 === totalSlides - 1;
+
+    if (window.innerWidth <= 767) {
+      this.isFirstSlideDoc = currentIndex === 0;
+      this.isLastSlideDoc = currentIndex === totalSlides - 1;
+    } else if (window.innerWidth < 1300 && window.innerWidth > 767) {
+      this.isFirstSlideDoc = currentIndex === 0;
+      this.isLastSlideDoc = currentIndex + 1 === totalSlides - 1;
+    } else {
+      this.isFirstSlideDoc = currentIndex === 0;
+      this.isLastSlideDoc = currentIndex + 2 === totalSlides - 1;
+    }
+
+
   }
 
-  replaceLastLetterWithE(word: string) {
+  replaceLastLetterWithE(word
+                           :
+                           string
+  ) {
     if (word.length === 0) return word; // Проверяем, что строка не пустая
     return word.slice(0, -1) + "е";
   }
@@ -341,18 +421,34 @@ export class SiteComponent {
     }
   }
 
-  openPopup(id: string) {
+  openPopup(id
+              :
+              string
+  ) {
     const popup = document.getElementById(id) as HTMLDialogElement;
     if (popup) {
       popup.showModal();
     }
   }
 
-  closePopup(id: string) {
+  closePopup(id
+               :
+               string
+  ) {
     const popup = document.getElementById(id) as HTMLDialogElement;
     if (popup && popup.open) {
       popup.close();
     }
+  }
+
+  openMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.add('opened');
+  }
+
+  closeMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu && mobileMenu.classList.contains('opened')) mobileMenu.classList.remove('opened');
   }
 
   protected readonly environment = environment;

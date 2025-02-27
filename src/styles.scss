@@ -80,6 +80,7 @@ body {
     }
   }
 }
+
 ol, li {
   margin-inline-start: 1em;
 }
@@ -92,6 +93,15 @@ p {
 
 .p-editor .ql-snow.ql-toolbar button.ql-active, .p-editor .ql-snow.ql-toolbar .ql-picker-label.ql-active, .p-editor .ql-snow.ql-toolbar .ql-picker-item.ql-selected {
   background: bisque;
+}
+
+@media screen and (max-width: 999px) {
+
+  .documents .owl-carousel.owl-drag .owl-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @include mat.core();

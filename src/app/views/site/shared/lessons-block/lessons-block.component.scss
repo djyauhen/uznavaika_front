@@ -1,137 +1,286 @@
 @import "../../site.component";
 
-::ng-deep .lessons-card-block {
+
+.lessons-card-block {
   display: flex;
   flex-wrap: wrap;
   gap: 53px 32px;
   justify-content: space-between;
+  margin-top: 23px;
+}
 
-  .lesson-card-item {
+::ng-deep .lesson-container {
+  .lesson-actions {
+    .lesson-btn, .lesson-btn.two-amount {
+      padding: 15px;
 
-    .lesson-container {
-      position: relative;
-      border: 3px solid $admin-orange-color;
-      border-radius: 16px;
-      background: $admin-yellow-light-color;
-      height: 100%;
-      max-width: 710px;
+      .amount {
+        font-size: 22px;
+        line-height: 22px;
+      }
+
+      .type {
+        font-size: 10px;
+        line-height: 16px;
+      }
+    }
+
+    .btn-blue {
+      padding: 15px 20px;
+      font-size: 20px;
+    }
+  }
+
+  position: relative;
+  border: 3px solid $admin-orange-color;
+  border-radius: 16px;
+  background: $admin-yellow-light-color;
+  height: 100%;
+  max-width: 710px;
+  min-height: 648px;
+
+  .lesson-card-age {
+    position: absolute;
+    top: -23px;
+    right: -2px;
+    padding: 10px 20px;
+    border-radius: 16px;
+    background-color: $admin-red-color;
+    @include admin-text-p2;
+    color: $admin-yellow-light-color;
+    font-family: "Adigiana 2", sans-serif;
+  }
+
+  background: $admin-yellow-light-color;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .lesson-card-header {
+    width: 100%;
+    border-radius: 12px 12px 16px 16px;
+    padding: 27px;
+    background-color: $admin-orange-color;
+    @include admin-title-h3;
+    color: $admin-yellow-light-color;
+    font-family: "Adigiana 2", sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .lesson-card-text {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    @include admin-text-p3;
+
+    p {
+      display: inline-grid;
+      max-width: unset;
+    }
+
+    ul {
+      list-style: none !important; /* Убираем стандартные маркеры */
+      padding-left: 0; /* Убираем отступ слева */
+
+      li {
+        position: relative;
+        padding-left: 24px; /* Отступ для иконки */
+        margin: 0;
+
+        &::before {
+          content: ''; /* Обязательное свойство для псевдоэлемента */
+          position: absolute;
+          left: 0;
+          top: 11px;
+          transform: translateY(-50%);
+          width: 22px; /* Ширина иконки */
+          height: 22px; /* Высота иконки */
+          background-image: url('../../../../../../public/images/star.png'); /* Путь к иконке */
+          background-size: auto; /* Масштабирование иконки */
+        }
+      }
+    }
+  }
+
+  .lesson-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 60px 25px;
+    margin-top: auto;
+
+    .lesson-btn {
+      @include site-btn-yellow;
+      padding: 16px;
       width: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-      .lesson-card-header {
-        width: 100%;
-        border-radius: 12px 12px 16px 16px;
-        padding: 27px;
-        background-color: $admin-orange-color;
-        @include admin-title-h3;
-        color: $admin-yellow-light-color;
-        font-family: "Adigiana 2", sans-serif;
-        text-align: center;
+      &:hover {
+        cursor: inherit;
+        border: 1px solid transparent;
+      }
+
+      .amount {
+        display: block;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 22px;
+      }
+
+      .type {
+        display: block;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
         text-transform: uppercase;
       }
 
-      .lesson-card-age {
-        position: absolute;
-        top: -23px;
-        right: -3px;
-        padding: 10px 20px;
-        border-radius: 16px;
-        background-color: $admin-red-color;
-        @include admin-text-p2;
-        color: $admin-yellow-light-color;
-        font-family: "Adigiana 2", sans-serif;
+      &.two-amount {
+        padding: 10px;
+      }
+    }
+
+    .btn-blue {
+      @include site-btn-blue;
+
+      .icon {
+        width: 22px;
+        height: 16px;
+      }
+    }
+  }
+
+  &.lesson-container-narrow {
+    max-width: 498px;
+  }
+}
+
+.slide-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+
+  .icon {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+
+    &:hover {
+      cursor: pointer;
+
+      path {
+        stroke: $admin-brown-color;
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+
+      path {
+        stroke: $admin-yellow-light-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1299px) {
+  .lessons-card-block .lesson-card-item {
+    max-width: calc(50% - 16px);
+    width: 100%;
+  }
+
+  .lesson-container.lesson-container-narrow, .lesson-container {
+    max-width: 710px;
+    width: 100%;
+  }
+
+  .lesson-container .lesson-actions {
+    .lesson-btn, .lesson-btn.two-amount {
+      padding: 5px;
+
+      .amount {
+        font-size: 16px;
+        line-height: 16px;
       }
 
-      .lesson-card-text {
-        padding: 20px 25px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        @include admin-text-p3;
+      .type {
+        font-size: 9px;
+        line-height: 11px;
+      }
+    }
 
-        p {
-          display: inline-grid;
-          max-width: unset;
-        }
+    .btn-blue {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  }
+}
 
-        ul {
-          list-style: none; /* Убираем стандартные маркеры */
-          padding-left: 0; /* Убираем отступ слева */
+@media screen and (max-width: 999px) {
 
-          li {
-            position: relative;
-            padding-left: 24px; /* Отступ для иконки */
-            margin: 0;
+  .lesson-card-item {
+    max-width: 710px;
+    width: 100%;
+  }
 
-            &::before {
-              content: ''; /* Обязательное свойство для псевдоэлемента */
-              position: absolute;
-              left: 0;
-              top: 11px;
-              transform: translateY(-50%);
-              width: 22px; /* Ширина иконки */
-              height: 22px; /* Высота иконки */
-              background-image: url('../../../../../../public/images/star.png'); /* Путь к иконке */
-              background-size: auto; /* Масштабирование иконки */
-            }
-          }
-        }
+}
+
+@media screen and (max-width: 767px) {
+  ::ng-deep .owl-item {
+    display: flex;
+  }
+
+  .lesson-card-item {
+    flex: 1;
+  }
+
+  .lessons-card-block {
+    margin-top: 0;
+  }
+
+  .lesson-container {
+    min-height: 604px;
+    max-height: 670px;
+    height: 100%;
+    margin-top: 23px;
+
+    .lesson-card-age {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .lesson-card-header {
+      padding: 15px;
+      line-height: 22px;
+      font-size: 16px;
+    }
+
+    .lesson-card-text {
+      padding: 20px;
+      line-height: 20px;
+      font-size: 14px;
+    }
+
+
+    .lesson-actions {
+      padding: 20px 20px 40px;
+      gap: 10px 5px;
+      flex-wrap: wrap;
+
+      .lesson-btn.two-btns {
+        max-width: calc((100% - 5px) / 2);
       }
 
-      .lesson-actions {
-        display: flex;
-        gap: 10px;
+      .btn.btn-blue.btn-lesson {
         width: 100%;
-        padding: 60px 25px;
-        margin-top: auto;
-
-        .lesson-btn {
-          @include site-btn-yellow;
-          padding: 16px;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-
-          &:hover {
-            cursor: inherit;
-            border: 1px solid transparent;
-          }
-
-          .amount {
-            display: block;
-            font-size: 22px;
-            font-weight: 500;
-            line-height: 22px;
-          }
-
-          .type {
-            display: block;
-            font-size: 10px;
-            font-weight: 500;
-            line-height: 12px;
-            text-transform: uppercase;
-          }
-
-          &.two-amount {
-            padding: 10px;
-          }
-        }
-
-        .btn-blue {
-          @include site-btn-blue;
-
-          .icon {
-            width: 22px;
-            height: 16px;
-          }
-        }
-      }
-
-      &.lesson-container-narrow {
-        max-width: 498px;
+        justify-content: center;
       }
     }
   }

@@ -86,4 +86,13 @@
     <path d="M7 2.60539C8.76504 1.58437 10.8143 1 13 1C19.6274 1 25 6.37258 25 13C25 19.6274 19.6274 25 13 25C6.37258 25 1 19.6274 1 13C1 10.8143 1.58437 8.76504 2.60539 7" stroke="#584945" stroke-linecap="round"/>
   </symbol>
 
+  <symbol id="mobile-menu" width="24" height="25" viewBox="0 0 24 25" fill="none">
+    <path d="M13.9502 5H3.0002" stroke="#584945" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 5H18.02" stroke="#584945" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 10H11.53" stroke="#584945" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 15H3" stroke="#584945" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 20H11.53" stroke="#584945" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+
 </svg>
