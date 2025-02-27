@@ -2160,6 +2160,13 @@ dialog#thanks-popup {
     min-width: unset;
     padding-bottom: 47px;
 
+    &.mobile-menu {
+      transition: all linear 0.5s;
+
+      .container {
+        padding: 0 50px;}
+    }
+
     .container {
       padding: 0 20px;
 
@@ -2496,6 +2503,34 @@ dialog#thanks-popup {
       .bottom-part {
         font-size: 14px;
         line-height: 20px;
+      }
+    }
+  }
+
+  dialog#thanks-popup {
+    max-width: 335px;
+    padding: 120px 20px 155px;
+
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+
+      .bg-hearts {
+        top: -100px;
+      }
+
+      .title {
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .close-btn {
+        right: 0;
       }
     }
   }
