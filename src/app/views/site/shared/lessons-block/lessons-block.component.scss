@@ -285,3 +285,36 @@
     }
   }
 }
+
+::ng-deep .visually-impaired {
+  * {
+    font-family: "Gilroy", sans-serif;
+    color: rgba(55, 49, 47, 1);
+  }
+
+  .btn, .btn.btn-blue, .btn {
+    background: rgba(55, 49, 47, 1) !important;
+    box-shadow: none !important;
+    color: rgba(255, 255, 255, 1) !important;
+    border: 0 !important;
+  }
+
+  .lesson-container {
+    background: rgba(249, 249, 249, 1);
+    border: 0;
+
+    .lesson-card-age {
+      background: rgba(78, 75, 75, 1);
+      color: rgba(255, 255, 255, 1) !important;
+      right: 2px;
+    }
+
+    .lesson-card-header {
+      background: rgba(234, 234, 234, 1);
+    }
+
+    .lesson-card-text ul li::before {
+      background-image: url('../../../../../../public/images/star-imp.png');
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, SimpleChanges, ViewChild} from '@angular/core';
 import {LessonType} from "../../../../../../types/lesson.type";
 import {NgForOf, NgIf, NgSwitchCase} from "@angular/common";
 import {LessonsService} from "../../../../shared/services/lessons.service";
@@ -26,6 +26,7 @@ import {SanitizeHtmlPipe} from "../../../../shared/pipes/sanitize-html.pipe";
 })
 export class LessonsBlockComponent {
   @Input() category_id!: string;
+  @Input() visuallyImpaired: boolean = false;
   categoryLessons: LessonType[] | null = null;
   tabletMobScreen: boolean = false;
   mobileVersion: boolean = false;
@@ -66,6 +67,12 @@ export class LessonsBlockComponent {
           console.log(this.categoryLessons);
         }
       });
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['visuallyImpaired']) {
+      console.log('visuallyImpaired изменился:', changes['visuallyImpaired'].currentValue);
+      // Здесь ваша логика при изменении
+    }
   }
 
   scrollTo() {

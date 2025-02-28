@@ -176,6 +176,7 @@ export class SiteComponent {
   isLastSlideDoc: boolean = false;
   smallReviewSlides: boolean = false;
   mobileVersion: boolean = false;
+  visuallyImpaired: boolean = false;
 
   fb = inject(FormBuilder);
   orderForm: FormGroup = this.fb.group({
@@ -390,12 +391,27 @@ export class SiteComponent {
 
   }
 
-  replaceLastLetterWithE(word
-                           :
-                           string
-  ) {
-    if (word.length === 0) return word; // Проверяем, что строка не пустая
-    return word.slice(0, -1) + "е";
+  replaceLastLetterWithE(month: string) {
+
+    // Список склонений для дательного падежа
+    const monthDeclensions = {
+      "январь": "январе",
+      "февраль": "феврале",
+      "март": "марте",
+      "апрель": "апреле",
+      "май": "мае",
+      "июнь": "июне",
+      "июль": "июле",
+      "август": "августе",
+      "сентябрь": "сентябре",
+      "октябрь": "октябре",
+      "ноябрь": "ноябре",
+      "декабрь": "декабре"
+    };
+
+    // Возвращаем склонённый месяц или исходное слово, если его нет в словаре
+    const key = month as keyof typeof monthDeclensions;
+    return monthDeclensions[key] || month;
   }
 
   sendMessage() {
@@ -449,6 +465,10 @@ export class SiteComponent {
   closeMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu && mobileMenu.classList.contains('opened')) mobileMenu.classList.remove('opened');
+  }
+
+  visuallyImpairedChange() {
+    this.visuallyImpaired = !this.visuallyImpaired;
   }
 
   protected readonly environment = environment;

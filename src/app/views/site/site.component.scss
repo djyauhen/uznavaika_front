@@ -898,7 +898,7 @@ p {
     padding-bottom: 94px;
 
     .title {
-      max-width: 725px;
+      max-width: 755px;
       text-align: center;
       margin: 0 auto;
       position: relative;
@@ -1840,8 +1840,8 @@ dialog#thanks-popup {
     align-items: center;
     justify-content: center;
 
-    .top, .left {
-      width: 100%;
+    .top, .bottom {
+      width: 60%;
     }
   }
 
@@ -2164,7 +2164,8 @@ dialog#thanks-popup {
       transition: all linear 0.5s;
 
       .container {
-        padding: 0 50px;}
+        padding: 0 50px;
+      }
     }
 
     .container {
@@ -2201,6 +2202,7 @@ dialog#thanks-popup {
       flex-wrap: nowrap;
       overflow: scroll;
       flex-direction: row;
+      scrollbar-width: none;
 
       .advantage-item, .advantage-item:nth-child(2n) {
         padding: 11px;
@@ -2535,3 +2537,268 @@ dialog#thanks-popup {
     }
   }
 }
+
+.visually-impaired {
+  * {
+    font-family: "Gilroy", sans-serif !important;
+    color: rgba(55, 49, 47, 1) !important;
+  }
+
+  .btn, .btn.btn-blue {
+    background: rgba(55, 49, 47, 1) !important;
+    box-shadow: none !important;
+    color: rgba(255, 255, 255, 1) !important;
+    border: 0 !important;
+  }
+
+
+  .btn.lesson-btn {
+    background: rgba(78, 75, 75, 1) !important;
+
+    * {
+      color: rgba(255, 255, 255, 1) !important;
+    }
+  }
+
+  .icon * {
+    stroke: #FFFFFF
+  }
+
+  .main-screen {
+    background: url("../../../../public/images/1_screen.webp") top left / 64% no-repeat, linear-gradient(45deg, black, black);
+    background-blend-mode: luminosity;
+
+    .header .container {
+      .nav .menu-item .menu-item-link {
+        background: rgba(98, 98, 98, 1);
+        border: 0;
+        color: rgba(255, 255, 255, 1) !important;
+
+        &:hover {
+          border: 0;
+        }
+      }
+    }
+
+    .main-screen-right {
+      border: 0;
+      border-radius: 0;
+      background-color: rgba(249, 249, 249, 1);
+
+      .container {
+        .title .title-bg-child, .title .title-bg-school {
+          background: none;
+        }
+
+        .bg-sun, .bg-rainbow {
+          display: none;
+        }
+
+        .small-window-image {
+          background-color: black;
+          background-blend-mode: luminosity;
+        }
+      }
+    }
+  }
+
+  .welcome .container {
+    background-image: none;
+
+    .title {
+      max-width: 750px;
+    }
+
+    .advantage-items .advantage-item {
+      border: 0;
+      background: rgba(249, 249, 249, 1);
+      align-items: flex-start;
+
+      .advantage-item-title {
+        font-weight: 600;
+        text-align: left;
+      }
+
+      .advantage-item-description {
+        text-align: left;
+      }
+    }
+  }
+
+  .direction .container {
+    .kite-bg,
+    .rainbow-bg,
+    .dash_line1-bg,
+    .dash_line2-bg,
+    .sun_cloud-bg {
+      display: none;
+    }
+
+    .title .title-bg {
+      background-image: none;
+    }
+
+    .direction-category-items .direction-category-item .category-title {
+      background: rgba(234, 234, 234, 1);
+      border: 0;
+    }
+  }
+
+  .teachers .container {
+    .balloons-bg, .small-sun-bg {
+      display: none;
+    }
+
+    .teachers-block {
+      .teachers-button .teacher-button {
+        background: rgba(249, 249, 249, 1);
+        border: 0;
+
+        .teacher-photo-block {
+          background-color: black;
+          background-blend-mode: luminosity;
+        }
+
+        &.active {
+          border: 0;
+        }
+      }
+
+      .teacher-card {
+        .teacher-card-photo {
+          background-color: black;
+          background-blend-mode: luminosity;
+        }
+
+        .teacher-card-info-block {
+          background: rgba(249, 249, 249, 1);
+          border: 0;
+        }
+      }
+    }
+  }
+
+  .photos .container {
+    .photos-bg {
+      display: none;
+    }
+
+    .container-photos img {
+      background-color: black;
+      background-blend-mode: luminosity;
+    }
+  }
+
+  .reviews .container {
+    .heart-yellow,
+    .heart-orange,
+    .heart-red {
+      display: none;
+    }
+
+    .title {
+      max-width: 100%;
+
+      .title-bg {
+        background-image: none;
+      }
+    }
+
+    .slide-container img {
+      filter: grayscale(100%); /* 100% — полностью черно-белое */
+    }
+  }
+
+  .offers .container {
+    .bg-kite {
+      display: none;
+    }
+
+    .title {
+      .bg-circle,
+      .bg-arrow-line {
+        display: none;
+      }
+    }
+
+    .offers-items .offer-card-item {
+      border: 0;
+      background: rgba(234, 234, 234, 1);
+
+      .offer-container .offer-btn {
+        .new-amount, .old-amount {
+          color: rgba(255, 255, 255, 1) !important;
+        }
+      }
+    }
+  }
+
+  .order {
+    background: rgba(234, 234, 234, 1);
+
+    .container {
+      padding-left: 30px;
+
+      .bg-heart-yellow,
+      .bg-heart-orange,
+      .bg-heart-red,
+      .bg-sun,
+      .bg-rocket,
+      .bg-arrow,
+      .bg-rainbow-cloud {
+        display: none;
+      }
+
+      .order-block {
+        margin: 0 auto;
+        max-width: 660px;
+
+        .order-form .order-inputs .form-item {
+          border-color: rgba(38, 34, 34, 1);
+        }
+      }
+    }
+  }
+
+  .documents .container .document-item {
+    background-color: black;
+    background-blend-mode: luminosity;
+  }
+
+  .footer {
+    .bg-white-line1,
+    .bg-white-line2 {
+      display: none;
+    }
+
+    background: rgba(55, 49, 47, 1);
+
+    * {
+      color: rgba(255, 255, 255, 1) !important;
+    }
+
+    .container {
+      .bg-sun-cloud,
+      .bg-heart-orange,
+      .bg-heart-yellow,
+      .bg-heart-red {
+        display: none;
+      }
+
+      .right-part .cart {
+        filter: grayscale(1);
+      }
+    }
+  }
+
+  dialog#thanks-popup {
+    background: rgba(234, 234, 234, 1);;
+
+    .container {
+      .bg-hearts {
+        display: none;
+      }
+    }
+  }
+}
+
