@@ -24,6 +24,7 @@ import {NgxMaskDirective} from "ngx-mask";
 import {MailService} from "../../shared/services/mail.service";
 import {NbspAfterPrepositionsPipe} from "../../shared/pipes/preposition.pipe";
 import {SanitizeHtmlPipe} from "../../shared/pipes/sanitize-html.pipe";
+import {MatSnackBar, MatSnackBarRef} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-site',
@@ -186,6 +187,7 @@ export class SiteComponent {
     phone: ['', Validators.required],
     agree: [false, Validators.requiredTrue]
   });
+  private _snackBar = inject(MatSnackBar);
 
   constructor(private readonly categoriesService: CategoriesService,
               private readonly documentsService: DocumentService,
@@ -434,7 +436,15 @@ export class SiteComponent {
       //       throw new Error(err);
       //     }
       //   })
+    } else {
+      this.openSnackBar();
     }
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Заполните все поля!', 'OK', {
+      duration: 4000
+    });
   }
 
   openPopup(id

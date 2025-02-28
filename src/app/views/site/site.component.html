@@ -60,8 +60,8 @@
         <button class="btn btn-main-screen" (click)="scrollTo()">
           оставить заявку
           <svg class="icon icon-arrow">
-            <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16"  *ngIf="!visuallyImpaired"></use>
-            <use href="images/icons/sprite.svg#btn-arrow-imp" width="20" height="16"  *ngIf="visuallyImpaired"></use>
+            <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16" *ngIf="!visuallyImpaired"></use>
+            <use href="images/icons/sprite.svg#btn-arrow-imp" width="20" height="16" *ngIf="visuallyImpaired"></use>
           </svg>
         </button>
         <div class="bg-sun"></div>
@@ -362,8 +362,8 @@
             </button>
             <button class="btn btn-blue btn-offer" (click)="scrollTo()">оставить заявку
               <svg class="icon icon-arrow">
-                <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16"  *ngIf="!visuallyImpaired"></use>
-                <use href="images/icons/sprite.svg#btn-arrow-imp" width="20" height="16"  *ngIf="visuallyImpaired"></use>
+                <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16" *ngIf="!visuallyImpaired"></use>
+                <use href="images/icons/sprite.svg#btn-arrow-imp" width="20" height="16" *ngIf="visuallyImpaired"></use>
               </svg>
             </button>
 
@@ -434,10 +434,10 @@
             Я даю согласие на обработку персональных данных
           </label>
 
-          <button class="btn btn-blue btn-offer" [disabled]="!orderForm.valid" (click)="sendMessage()">оставить заявку
+          <button class="btn btn-blue btn-offer" (click)="sendMessage()">оставить заявку
             <svg class="icon icon-arrow">
-              <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16"  *ngIf="!visuallyImpaired"></use>
-              <use href="images/icons/sprite.svg#btn-arrow-imp" width="20" height="16"  *ngIf="visuallyImpaired"></use>
+              <use href="images/icons/sprite.svg#btn-arrow" width="20" height="16" *ngIf="!visuallyImpaired"></use>
+              <use href="images/icons/sprite.svg#btn-arrow-imp" width="20" height="16" *ngIf="visuallyImpaired"></use>
             </svg>
           </button>
         </form>
