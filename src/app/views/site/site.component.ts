@@ -1,5 +1,4 @@
 import {Component, inject, ViewChild} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {CategoriesService} from "../../shared/services/categories.service";
 import {DocumentService} from "../../shared/services/document.service";
@@ -418,24 +417,22 @@ export class SiteComponent {
 
   sendMessage() {
     if (this.orderForm.valid) {
-
-      this.openPopup('thanks-popup');
-      this.orderForm.reset();
-      // this.mailService.sendMessage(this.orderForm.value)
-      //   .subscribe({
-      //     next: (data) => {
-      //       if (data.error) {
-      //         console.log(data.errorType);
-      //       } else {
-      //         console.log(data);
-      //         this.openPopup('thanks-popup');
-      //         this.orderForm.reset();
-      //       }
-      //     },
-      //     error: (err) => {
-      //       throw new Error(err);
-      //     }
-      //   })
+      this.mailService.sendMessage(this.orderForm.value)
+        .subscribe({
+          next: (data) => {
+            if (data.error) {
+              console.log(data.errorType);
+            } else {
+              console.log(data);
+              this.openPopup('thanks-popup');
+              this.orderForm.reset();
+            }
+          },
+          error: (err) => {
+            this.openSnackBarError();
+            throw new Error(err);
+          }
+        })
     } else {
       this.openSnackBar();
     }
@@ -446,21 +443,20 @@ export class SiteComponent {
       duration: 4000
     });
   }
+  openSnackBarError() {
+    this._snackBar.open('Извините, что-то пошло не так! Повторите позже!', 'OK', {
+      duration: 4000
+    });
+  }
 
-  openPopup(id
-              :
-              string
-  ) {
+  openPopup(id: string) {
     const popup = document.getElementById(id) as HTMLDialogElement;
     if (popup) {
       popup.showModal();
     }
   }
 
-  closePopup(id
-               :
-               string
-  ) {
+  closePopup(id: string) {
     const popup = document.getElementById(id) as HTMLDialogElement;
     if (popup && popup.open) {
       popup.close();
